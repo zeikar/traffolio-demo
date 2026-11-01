@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest something Traffolio could collect or show.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What you want to do
+      description: The question you want answered or the task you're doing, not only the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: How Traffolio could help. Note what it would add to the stored data or to what's published, if anything.

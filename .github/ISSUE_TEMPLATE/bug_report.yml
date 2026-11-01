@@ -1,0 +1,32 @@
+name: Bug report
+description: Collection, the README output or the local dashboard doesn't work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste your token. Leave out names, numbers or referrers of private repositories you don't want to share.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: run
+    attributes:
+      label: Run Summary and log
+      description: The Actions run's Summary and the relevant lines of the "Collect traffic" step, if it's about collection.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Traffolio version
+      description: The `version` in your repository's package.json, or the commit you last updated from.
+  - type: textarea
+    id: config
+    attributes:
+      label: traffolio.config.yml
+      description: Your configuration, if it may matter.
+      render: yaml

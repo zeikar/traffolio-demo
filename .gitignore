@@ -7,3 +7,5 @@ coverage/
 # Generated dashboards contain private traffic data
 dashboard.html
 dashboard-demo.html
+# Playwright MCP page snapshots (can contain dashboard data)
+.playwright-mcp/
