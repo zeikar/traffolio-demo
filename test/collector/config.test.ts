@@ -62,9 +62,9 @@ describe("loadConfig", () => {
     );
   });
 
-  it("parses the shipped traffolio.config.yml", async () => {
+  // Only that it parses: instances edit this file, so its values can't be asserted here.
+  it("parses the repository's traffolio.config.yml", async () => {
     const config = await loadConfig("traffolio.config.yml");
-    expect(config.repositories.exclude).toEqual(["test-*", "playground-*"]);
     expect(parseConfig(await readFile("traffolio.config.yml", "utf8"))).toEqual(config);
   });
 });
