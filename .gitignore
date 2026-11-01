@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.env*
+.DS_Store
+.hyperclaude/
+# Generated dashboards contain private traffic data
+dashboard.html
+dashboard-demo.html

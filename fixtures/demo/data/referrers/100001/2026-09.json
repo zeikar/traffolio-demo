@@ -1,0 +1,137 @@
+{
+  "month": "2026-09",
+  "repositoryId": 100001,
+  "schemaVersion": 1,
+  "snapshots": {
+    "2026-09-22": {
+      "paths": [
+        {
+          "count": 53,
+          "path": "/octo-sample/sample-cli",
+          "title": "octo-sample/sample-cli",
+          "uniques": 34
+        },
+        {
+          "count": 12,
+          "path": "/octo-sample/sample-cli/releases",
+          "title": "Releases · octo-sample/sample-cli",
+          "uniques": 6
+        },
+        {
+          "count": 6,
+          "path": "/octo-sample/sample-cli/blob/main/README.md",
+          "title": "sample-cli/README.md at main",
+          "uniques": 3
+        },
+        {
+          "count": 4,
+          "path": "/octo-sample/sample-cli/issues",
+          "title": "Issues · octo-sample/sample-cli",
+          "uniques": 3
+        }
+      ],
+      "referrers": [
+        {
+          "count": 28,
+          "referrer": "github.com",
+          "uniques": 18
+        },
+        {
+          "count": 16,
+          "referrer": "Google",
+          "uniques": 8
+        },
+        {
+          "count": 5,
+          "referrer": "news.ycombinator.com",
+          "uniques": 3
+        },
+        {
+          "count": 3,
+          "referrer": "dev.to",
+          "uniques": 2
+        },
+        {
+          "count": 3,
+          "referrer": "reddit.com",
+          "uniques": 2
+        },
+        {
+          "count": 2,
+          "referrer": "duckduckgo.com",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "referrer": "Bing",
+          "uniques": 1
+        }
+      ]
+    },
+    "2026-09-29": {
+      "paths": [
+        {
+          "count": 74,
+          "path": "/octo-sample/sample-cli",
+          "title": "octo-sample/sample-cli",
+          "uniques": 44
+        },
+        {
+          "count": 18,
+          "path": "/octo-sample/sample-cli/releases",
+          "title": "Releases · octo-sample/sample-cli",
+          "uniques": 7
+        },
+        {
+          "count": 5,
+          "path": "/octo-sample/sample-cli/blob/main/README.md",
+          "title": "sample-cli/README.md at main",
+          "uniques": 3
+        },
+        {
+          "count": 5,
+          "path": "/octo-sample/sample-cli/issues",
+          "title": "Issues · octo-sample/sample-cli",
+          "uniques": 2
+        }
+      ],
+      "referrers": [
+        {
+          "count": 24,
+          "referrer": "github.com",
+          "uniques": 18
+        },
+        {
+          "count": 12,
+          "referrer": "Google",
+          "uniques": 6
+        },
+        {
+          "count": 6,
+          "referrer": "news.ycombinator.com",
+          "uniques": 4
+        },
+        {
+          "count": 4,
+          "referrer": "reddit.com",
+          "uniques": 2
+        },
+        {
+          "count": 3,
+          "referrer": "dev.to",
+          "uniques": 1
+        },
+        {
+          "count": 3,
+          "referrer": "duckduckgo.com",
+          "uniques": 2
+        },
+        {
+          "count": 1,
+          "referrer": "Bing",
+          "uniques": 1
+        }
+      ]
+    }
+  }
+}

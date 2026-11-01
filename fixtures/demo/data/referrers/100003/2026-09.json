@@ -1,0 +1,97 @@
+{
+  "month": "2026-09",
+  "repositoryId": 100003,
+  "schemaVersion": 1,
+  "snapshots": {
+    "2026-09-22": {
+      "paths": [
+        {
+          "count": 13,
+          "path": "/octo-sample/Sample-Docs",
+          "title": "octo-sample/Sample-Docs",
+          "uniques": 8
+        },
+        {
+          "count": 5,
+          "path": "/octo-sample/Sample-Docs/releases",
+          "title": "Releases · octo-sample/Sample-Docs",
+          "uniques": 2
+        },
+        {
+          "count": 2,
+          "path": "/octo-sample/Sample-Docs/blob/main/README.md",
+          "title": "Sample-Docs/README.md at main",
+          "uniques": 1
+        },
+        {
+          "count": 2,
+          "path": "/octo-sample/Sample-Docs/issues",
+          "title": "Issues · octo-sample/Sample-Docs",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 10,
+          "referrer": "github.com",
+          "uniques": 7
+        },
+        {
+          "count": 4,
+          "referrer": "Google",
+          "uniques": 3
+        },
+        {
+          "count": 2,
+          "referrer": "news.ycombinator.com",
+          "uniques": 1
+        }
+      ]
+    },
+    "2026-09-29": {
+      "paths": [
+        {
+          "count": 23,
+          "path": "/octo-sample/Sample-Docs",
+          "title": "octo-sample/Sample-Docs",
+          "uniques": 9
+        },
+        {
+          "count": 5,
+          "path": "/octo-sample/Sample-Docs/releases",
+          "title": "Releases · octo-sample/Sample-Docs",
+          "uniques": 3
+        },
+        {
+          "count": 2,
+          "path": "/octo-sample/Sample-Docs/blob/main/README.md",
+          "title": "Sample-Docs/README.md at main",
+          "uniques": 1
+        },
+        {
+          "count": 2,
+          "path": "/octo-sample/Sample-Docs/issues",
+          "title": "Issues · octo-sample/Sample-Docs",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 7,
+          "referrer": "github.com",
+          "uniques": 3
+        },
+        {
+          "count": 3,
+          "referrer": "Google",
+          "uniques": 2
+        },
+        {
+          "count": 2,
+          "referrer": "news.ycombinator.com",
+          "uniques": 1
+        }
+      ]
+    }
+  }
+}

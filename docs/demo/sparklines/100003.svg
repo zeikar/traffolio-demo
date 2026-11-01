@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="28" viewBox="0 0 120 28" role="img" aria-label="30-day views and clones">
+<title>30-day views and clones</title>
+<rect x="0.5" y="0.5" width="119" height="27" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+<line x1="5.0" y1="23.0" x2="115.0" y2="23.0" stroke="#eaeef2" stroke-width="1"/>
+<path class="views" d="M5.0 14.0 L8.8 13.0 L12.6 12.0 L16.4 11.0 L20.2 10.0 L24.0 9.0 L27.8 8.0 M46.7 7.0 L50.5 6.0 L54.3 5.0" fill="none" stroke="#0969da" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="clones" d="M5.0 17.0 L8.8 16.0 L12.6 23.0 L16.4 20.0 L20.2 19.0 L24.0 18.0 L27.8 17.0 M46.7 16.0 L50.5 15.0 L54.3 20.0" fill="none" stroke="#bc4c00" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

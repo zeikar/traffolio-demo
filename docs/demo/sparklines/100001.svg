@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="28" viewBox="0 0 120 28" role="img" aria-label="30-day views and clones">
+<title>30-day views and clones</title>
+<rect x="0.5" y="0.5" width="119" height="27" rx="4" fill="#ffffff" stroke="#d0d7de"/>
+<line x1="5.0" y1="23.0" x2="115.0" y2="23.0" stroke="#eaeef2" stroke-width="1"/>
+<path class="views" d="M5.0 9.7 L8.8 9.3 L12.6 8.9 L16.4 23.0 L20.2 8.1 L24.0 7.7 L27.8 7.3 M46.7 7.0 L50.5 6.6 L54.3 6.2 L58.1 5.8 L61.9 5.4 L65.7 5.0 L69.5 11.3 L73.3 23.0 L77.1 10.5 L80.9 10.1 L84.7 9.7 L88.4 9.3 L92.2 8.9 L96.0 8.5 L99.8 8.1 L103.6 7.7 L107.4 7.3 L111.2 7.0 L115.0 23.0" fill="none" stroke="#0969da" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="clones" d="M5.0 18.7 L8.8 23.0 L12.6 17.9 L16.4 19.9 L20.2 19.5 L24.0 19.1 L27.8 18.7 M46.7 18.3 L50.5 17.9 L54.3 19.9 L58.1 19.5 L61.9 19.1 L65.7 18.7 L69.5 18.3 L73.3 23.0 L77.1 19.9 L80.9 19.5 L84.7 19.1 L88.4 18.7 L92.2 18.3 L96.0 17.9 L99.8 19.9 L103.6 19.5 L107.4 19.1 L111.2 18.7 L115.0 18.3" fill="none" stroke="#bc4c00" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

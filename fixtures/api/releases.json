@@ -1,0 +1,107 @@
+[
+  {
+    "id": 9000004,
+    "tag_name": "v2.2.0",
+    "name": "v2.2.0 (draft)",
+    "draft": true,
+    "prerelease": false,
+    "published_at": null,
+    "assets": [
+      {
+        "name": "sample-cli-2.2.0-x64.dmg",
+        "download_count": 3,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      }
+    ]
+  },
+  {
+    "id": 9000003,
+    "tag_name": "v2.1.0-beta.1",
+    "name": "v2.1.0 beta 1",
+    "draft": false,
+    "prerelease": true,
+    "published_at": "2026-10-20T23:30:00Z",
+    "assets": [
+      {
+        "name": "sample-cli-2.1.0-beta.1-x64.dmg",
+        "download_count": 15,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "sample-cli-2.1.0-beta.1-x64.dmg.blockmap",
+        "download_count": 120,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "latest-mac.yml",
+        "download_count": 300,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      }
+    ]
+  },
+  {
+    "id": 9000002,
+    "tag_name": "v2.0.0",
+    "name": "Sample CLI 2.0",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-08-03T12:00:00Z",
+    "assets": [
+      {
+        "name": "sample-cli-2.0.0-x64.exe",
+        "download_count": 120,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "sample-cli-2.0.0-x64.exe.sig",
+        "download_count": 400,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "sample-cli-linux-x64.tar.gz",
+        "download_count": 30,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "latest.yml",
+        "download_count": 500,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "checksums.txt",
+        "download_count": 50,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "SHA256SUMS",
+        "download_count": 9,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      },
+      {
+        "name": "SHA256SUMS.asc",
+        "download_count": 4,
+        "content_type": "application/octet-stream",
+        "size": 1024
+      }
+    ]
+  },
+  {
+    "id": 9000001,
+    "tag_name": "v1.0.0",
+    "name": null,
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2025-04-01T08:00:00Z",
+    "assets": []
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "name": "traffolio",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "demo": "npm run build && node dist/cli/demo.js",
+    "collect": "node dist/cli/collect.js",
+    "dashboard": "npm run build && node dist/cli/dashboard.js",
+    "dashboard:demo": "npm run build && node dist/cli/dashboard.js --data fixtures/demo --out dashboard-demo.html",
+    "check": "npm run typecheck && npm test && npm run build && npm run demo && git diff --exit-code -- docs/demo"
+  },
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "minimatch": "^11.0.2",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

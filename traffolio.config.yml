@@ -1,0 +1,21 @@
+repositories:
+  # Glob patterns (minimatch) matched against the repository name, case-insensitive.
+  include: ["*"]
+  # Same matching as include; exclude always wins over include.
+  exclude: ["test-*", "playground-*"]
+  # Collect private repositories too.
+  include_private: false
+  # Collect forks.
+  include_forks: false
+  # Collect archived repositories.
+  include_archived: false
+  # Collect the Traffolio repository itself (identified by ID via GITHUB_REPOSITORY,
+  # not by name). Still subject to include_private, since Traffolio is private
+  # (except in public mode).
+  include_self: false
+
+# Keep false for personal analytics. true lets a PUBLIC Traffolio repository collect, which
+# publishes the traffic numbers of the selected repositories to anyone (the repository's
+# Actions logs are public too). Private repositories can't be selected then (include_private
+# must stay false). Has no effect in a private repository. See README › Security.
+public_mode: false

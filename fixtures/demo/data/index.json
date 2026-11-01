@@ -1,0 +1,35 @@
+{
+  "repositories": {
+    "100001": {
+      "archived": false,
+      "fork": false,
+      "forks": 5,
+      "fullName": "octo-sample/sample-cli",
+      "name": "sample-cli",
+      "private": false,
+      "stars": 42,
+      "tracking": "tracked"
+    },
+    "100002": {
+      "archived": false,
+      "fork": false,
+      "forks": 2,
+      "fullName": "octo-sample/sample-web",
+      "name": "sample-web",
+      "private": false,
+      "stars": 17,
+      "tracking": "tracked"
+    },
+    "100003": {
+      "archived": false,
+      "fork": false,
+      "forks": 1,
+      "fullName": "octo-sample/Sample-Docs",
+      "name": "Sample-Docs",
+      "private": false,
+      "stars": 8,
+      "tracking": "tracked"
+    }
+  },
+  "schemaVersion": 1
+}

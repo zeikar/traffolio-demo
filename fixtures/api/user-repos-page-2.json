@@ -1,0 +1,35 @@
+[
+  {
+    "archived": true,
+    "fork": false,
+    "forks_count": 3,
+    "full_name": "octo-sample/old-archive",
+    "html_url": "https://github.com/octo-sample/old-archive",
+    "id": 100006,
+    "name": "old-archive",
+    "private": false,
+    "stargazers_count": 12
+  },
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 0,
+    "full_name": "octo-sample/secret-notes",
+    "html_url": "https://github.com/octo-sample/secret-notes",
+    "id": 100007,
+    "name": "secret-notes",
+    "private": true,
+    "stargazers_count": 0
+  },
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 0,
+    "full_name": "octo-sample/traffolio",
+    "html_url": "https://github.com/octo-sample/traffolio",
+    "id": 100008,
+    "name": "traffolio",
+    "private": true,
+    "stargazers_count": 0
+  }
+]

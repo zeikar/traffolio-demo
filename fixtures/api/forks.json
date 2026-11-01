@@ -1,0 +1,57 @@
+[
+  {
+    "id": 8000001,
+    "name": "sample-cli",
+    "full_name": "fork-owner-1/sample-cli",
+    "owner": {
+      "login": "fork-owner-1",
+      "id": 6000001
+    },
+    "fork": true,
+    "created_at": "2025-05-02T10:00:00Z"
+  },
+  {
+    "id": 8000002,
+    "name": "sample-cli",
+    "full_name": "fork-owner-2/sample-cli",
+    "owner": {
+      "login": "fork-owner-2",
+      "id": 6000002
+    },
+    "fork": true,
+    "created_at": "2025-11-19T16:45:00Z"
+  },
+  {
+    "id": 8000003,
+    "name": "sample-cli",
+    "full_name": "fork-owner-3/sample-cli",
+    "owner": {
+      "login": "fork-owner-3",
+      "id": 6000003
+    },
+    "fork": true,
+    "created_at": "2025-11-19T21:10:00Z"
+  },
+  {
+    "id": 8000004,
+    "name": "sample-cli",
+    "full_name": "fork-owner-4/sample-cli",
+    "owner": {
+      "login": "fork-owner-4",
+      "id": 6000004
+    },
+    "fork": true,
+    "created_at": "2026-07-08T09:30:00Z"
+  },
+  {
+    "id": 8000005,
+    "name": "sample-cli",
+    "full_name": "fork-owner-5/sample-cli",
+    "owner": {
+      "login": "fork-owner-5",
+      "id": 6000005
+    },
+    "fork": true,
+    "created_at": "2026-10-21T13:05:00Z"
+  }
+]

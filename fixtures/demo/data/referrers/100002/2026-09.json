@@ -1,0 +1,117 @@
+{
+  "month": "2026-09",
+  "repositoryId": 100002,
+  "schemaVersion": 1,
+  "snapshots": {
+    "2026-09-22": {
+      "paths": [
+        {
+          "count": 32,
+          "path": "/octo-sample/sample-web",
+          "title": "octo-sample/sample-web",
+          "uniques": 16
+        },
+        {
+          "count": 8,
+          "path": "/octo-sample/sample-web/releases",
+          "title": "Releases · octo-sample/sample-web",
+          "uniques": 6
+        },
+        {
+          "count": 4,
+          "path": "/octo-sample/sample-web/issues",
+          "title": "Issues · octo-sample/sample-web",
+          "uniques": 2
+        },
+        {
+          "count": 2,
+          "path": "/octo-sample/sample-web/blob/main/README.md",
+          "title": "sample-web/README.md at main",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 13,
+          "referrer": "github.com",
+          "uniques": 6
+        },
+        {
+          "count": 6,
+          "referrer": "Google",
+          "uniques": 3
+        },
+        {
+          "count": 4,
+          "referrer": "news.ycombinator.com",
+          "uniques": 2
+        },
+        {
+          "count": 3,
+          "referrer": "reddit.com",
+          "uniques": 2
+        },
+        {
+          "count": 1,
+          "referrer": "dev.to",
+          "uniques": 1
+        }
+      ]
+    },
+    "2026-09-29": {
+      "paths": [
+        {
+          "count": 31,
+          "path": "/octo-sample/sample-web",
+          "title": "octo-sample/sample-web",
+          "uniques": 17
+        },
+        {
+          "count": 9,
+          "path": "/octo-sample/sample-web/releases",
+          "title": "Releases · octo-sample/sample-web",
+          "uniques": 6
+        },
+        {
+          "count": 4,
+          "path": "/octo-sample/sample-web/issues",
+          "title": "Issues · octo-sample/sample-web",
+          "uniques": 3
+        },
+        {
+          "count": 3,
+          "path": "/octo-sample/sample-web/blob/main/README.md",
+          "title": "sample-web/README.md at main",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 21,
+          "referrer": "github.com",
+          "uniques": 15
+        },
+        {
+          "count": 8,
+          "referrer": "Google",
+          "uniques": 3
+        },
+        {
+          "count": 4,
+          "referrer": "news.ycombinator.com",
+          "uniques": 3
+        },
+        {
+          "count": 2,
+          "referrer": "dev.to",
+          "uniques": 1
+        },
+        {
+          "count": 2,
+          "referrer": "reddit.com",
+          "uniques": 1
+        }
+      ]
+    }
+  }
+}

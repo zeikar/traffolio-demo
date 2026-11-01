@@ -1,0 +1,57 @@
+[
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 5,
+    "full_name": "octo-sample/sample-cli",
+    "html_url": "https://github.com/octo-sample/sample-cli",
+    "id": 100001,
+    "name": "sample-cli",
+    "private": false,
+    "stargazers_count": 42
+  },
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 2,
+    "full_name": "octo-sample/sample-web",
+    "html_url": "https://github.com/octo-sample/sample-web",
+    "id": 100002,
+    "name": "sample-web",
+    "private": false,
+    "stargazers_count": 17
+  },
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 1,
+    "full_name": "octo-sample/Sample-Docs",
+    "html_url": "https://github.com/octo-sample/Sample-Docs",
+    "id": 100003,
+    "name": "Sample-Docs",
+    "private": false,
+    "stargazers_count": 8
+  },
+  {
+    "archived": false,
+    "fork": false,
+    "forks_count": 0,
+    "full_name": "octo-sample/test-scratch",
+    "html_url": "https://github.com/octo-sample/test-scratch",
+    "id": 100004,
+    "name": "test-scratch",
+    "private": false,
+    "stargazers_count": 1
+  },
+  {
+    "archived": false,
+    "fork": true,
+    "forks_count": 1,
+    "full_name": "octo-sample/forked-lib",
+    "html_url": "https://github.com/octo-sample/forked-lib",
+    "id": 100005,
+    "name": "forked-lib",
+    "private": false,
+    "stargazers_count": 3
+  }
+]

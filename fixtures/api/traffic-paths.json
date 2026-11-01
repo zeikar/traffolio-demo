@@ -1,0 +1,20 @@
+[
+  {
+    "path": "/octo-sample/sample-cli/releases",
+    "title": "Releases · octo-sample/sample-cli",
+    "count": 18,
+    "uniques": 9
+  },
+  {
+    "path": "/octo-sample/sample-cli",
+    "title": "octo-sample/sample-cli: A sample CLI",
+    "count": 140,
+    "uniques": 52
+  },
+  {
+    "path": "/octo-sample/sample-cli/blob/main/README.md",
+    "title": "sample-cli/README.md at main",
+    "count": 18,
+    "uniques": 7
+  }
+]

@@ -1,0 +1,80 @@
+# Traffolio daily collection.
+#
+# Exit codes of `node dist/cli/collect.js` (see README › Security):
+#   0  ok, or template-repo skip (outcome=ok|skipped): nothing failed.
+#   1  fatal (outcome=fatal): nothing was written; no commit; job fails.
+#   2  partial (outcome=partial): some data was written and IS committed and
+#      pushed below, but the collect step stays red so the job still fails.
+#
+# The commit/push steps use `!cancelled()` so they run even though the collect
+# step failed with exit 2. Do NOT add `continue-on-error` to the collect step:
+# that would turn exit 2 green.
+#
+# `pull_request_target` is intentionally absent: this workflow holds a
+# write-scoped token and a traffic-scoped PAT, and must never run on
+# untrusted pull request code.
+name: Traffolio Collect
+
+on:
+  schedule:
+    # UTC, deliberately off the congested top of the hour.
+    - cron: '37 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: traffolio-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Collect traffic
+        id: collect
+        run: node dist/cli/collect.js
+        env:
+          TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit
+        if: ${{ !cancelled() && steps.collect.outputs.commit == 'true' }}
+        env:
+          DATA_THROUGH: ${{ steps.collect.outputs.data_through }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- data README.md
+          if [ -d assets ]; then git add -A -- assets; fi
+          if git diff --cached --quiet; then
+            echo "Nothing staged; skipping commit."
+            exit 0
+          fi
+          git commit -m "chore(data): update traffic through ${DATA_THROUGH} (UTC)"
+
+      - name: Push
+        if: ${{ !cancelled() && steps.collect.outputs.commit == 'true' }}
+        run: |
+          if git push; then
+            exit 0
+          fi
+          echo "Push failed; rebasing and retrying once."
+          if git pull --rebase && git push; then
+            exit 0
+          fi
+          echo "::error::git push failed twice. Check branch protection rules (the default branch must allow github-actions[bot] to push) and concurrent pushes. See README > Troubleshooting."
+          exit 1

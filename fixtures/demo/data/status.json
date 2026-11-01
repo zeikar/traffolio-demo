@@ -1,0 +1,21 @@
+{
+  "dataThroughDate": "2026-10-25",
+  "repositories": {
+    "100001": {
+      "lastError": null,
+      "lastSuccessDate": "2026-10-25"
+    },
+    "100002": {
+      "lastError": null,
+      "lastSuccessDate": "2026-10-25"
+    },
+    "100003": {
+      "lastError": {
+        "date": "2026-10-10",
+        "kind": "forbidden"
+      },
+      "lastSuccessDate": "2026-10-09"
+    }
+  },
+  "schemaVersion": 1
+}
