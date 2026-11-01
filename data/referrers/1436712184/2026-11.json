@@ -1,0 +1,36 @@
+{
+  "month": "2026-11",
+  "repositoryId": 1436712184,
+  "schemaVersion": 1,
+  "snapshots": {
+    "2026-11-01": {
+      "paths": [
+        {
+          "count": 2,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/blob/main/Traffolio_MVP.md",
+          "title": "/blob/main/Traffolio_MVP.md",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/commits/main",
+          "title": "/commits/main",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 2,
+          "referrer": "github.com",
+          "uniques": 1
+        }
+      ]
+    }
+  }
+}
