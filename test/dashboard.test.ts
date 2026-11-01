@@ -95,7 +95,7 @@ describe("client logic (DOM-free) mirrors aggregate.ts", () => {
   type Repo = { days: Record<string, number[]> };
   interface Logic {
     periodRange(period: string, end: string | null, repos: Repo[]): { start: string; end: string } | null;
-    buildSeries(repos: Repo[], range: { start: string; end: string } | null): { views: number | null; partial: boolean; present: number; total: number }[];
+    buildSeries(repos: Repo[], range: { start: string; end: string } | null): { date: string; views: number | null; partial: boolean; present: number; total: number }[];
     sumSeries(series: unknown[]): Sum;
   }
   let logic: Logic;
@@ -124,6 +124,26 @@ describe("client logic (DOM-free) mirrors aggregate.ts", () => {
         expect(clientSum(period, [repos[i]!])).toEqual(sumPeriod(demo.days[id]!, end, len));
       }
     });
+  });
+
+  it("treats days before a repo's first key as not tracked yet, like aggregate.ts", () => {
+    const one = [1, 0, 1, 0];
+    const old: Repo = { days: { "2026-10-20": one, "2026-10-21": one, "2026-10-25": one } };
+    const fresh: Repo = { days: { "2026-10-24": one, "2026-10-25": one } };
+    const keyless: Repo = { days: {} };
+    const toMap = (r: Repo) =>
+      new Map(Object.entries(r.days).map(([d, v]) => [d, { views: v[0]!, uniqueViews: v[1]!, clones: v[2]!, uniqueCloners: v[3]! }]));
+    for (const scope of [[old, fresh], [fresh], [old, keyless]]) {
+      const totals = periodTotals(scope.map(toMap), end);
+      expect(clientSum("7d", scope)).toEqual(totals.d7);
+      expect(clientSum("30d", scope)).toEqual(totals.d30);
+      expect(clientSum("all", scope)).toEqual(totals.all);
+    }
+    expect(logic.periodRange("30d", end, [fresh])).toEqual({ start: "2026-10-24", end });
+    const series = logic.buildSeries([old, fresh], logic.periodRange("7d", end, [old, fresh]));
+    // Only 10-24 (fresh has it, old lacks it); 10-20/21 precede fresh's start, so they are complete.
+    expect(series.filter((p) => p.partial).map((p) => p.date)).toEqual(["2026-10-24"]);
+    expect(logic.buildSeries([old, keyless], { start: end, end })[0]).toMatchObject({ partial: true, present: 1, total: 2 });
   });
 
   it("marks partial days and keeps gaps as null", () => {

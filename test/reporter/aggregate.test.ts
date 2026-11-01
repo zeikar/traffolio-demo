@@ -117,11 +117,49 @@ describe("periodTotals / dailySeries", () => {
   it("'all' starts at the earliest key across repos", () => {
     const a = dayMap({ "2026-01-01": m(1, 0) });
     const b = dayMap({ "2026-01-03": m(2, 1) });
+    // 01-01: only a is tracked yet (complete); 01-02: missing; 01-03: a lacks it (partial).
     expect(periodTotals([a, b], "2026-01-03").all).toEqual({
       views: 3,
       clones: 1,
       presentDays: 2,
       missingDays: 1,
+      partialDays: 1,
+    });
+  });
+
+  it("days before tracking began are neither missing nor partial", () => {
+    const old = dayMap({ "2026-01-01": m(1, 1), "2026-01-02": m(1, 1), "2026-01-03": m(1, 1) });
+    const fresh = dayMap({ "2026-01-03": m(2, 2) });
+    // A 7-day window over a repo first collected 01-03 covers only 01-03.
+    expect(sumPeriod(fresh, "2026-01-03", 7)).toEqual({
+      views: 2,
+      clones: 2,
+      presentDays: 1,
+      missingDays: 0,
+      partialDays: 0,
+    });
+    expect(periodTotals([old, fresh], "2026-01-03").d7).toEqual({
+      views: 5,
+      clones: 5,
+      presentDays: 3,
+      missingDays: 0,
+      partialDays: 0,
+    });
+    expect(dailySeries([old, fresh], "2026-01-03", 4)).toEqual([
+      { date: "2025-12-31", views: null, clones: null, partial: false },
+      { date: "2026-01-01", views: 1, clones: 1, partial: false },
+      { date: "2026-01-02", views: 1, clones: 1, partial: false },
+      { date: "2026-01-03", views: 3, clones: 3, partial: false },
+    ]);
+  });
+
+  it("a repo with no keys at all (first collection failed) still marks days partial", () => {
+    const ok = dayMap({ "2026-01-01": m(1, 1), "2026-01-02": m(1, 1) });
+    expect(periodTotals([ok, new Map()], "2026-01-02").d7).toEqual({
+      views: 2,
+      clones: 2,
+      presentDays: 2,
+      missingDays: 0,
       partialDays: 2,
     });
   });

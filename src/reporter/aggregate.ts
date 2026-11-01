@@ -8,7 +8,7 @@ import type {
   Tracking,
 } from "../types.js";
 
-export type DayMap = Map<string, DayMetrics>;
+export type DayMap = ReadonlyMap<string, DayMetrics>;
 
 /**
  * Sums over the keys that exist in a date range. `views`/`clones` are `null`
@@ -76,7 +76,7 @@ const noData = (missingDays = 0): PeriodSum => ({
 });
 
 export function daysFromMonthFiles(files: MonthFile[]): DayMap {
-  const days: DayMap = new Map();
+  const days = new Map<string, DayMetrics>();
   for (const file of files) {
     for (const [date, metrics] of Object.entries(file.days)) days.set(date, metrics);
   }
@@ -95,36 +95,59 @@ function earliestDate(days: DayMap): string | undefined {
   return min;
 }
 
-/** Per date: summed over the repos that have the key; `null` if none do. */
-function dayTotals(repos: DayMap[], date: string): SeriesPoint {
+/**
+ * Per date: summed over the repos that have the key; `null` if none do.
+ * A repo counts toward `partial` only from its tracking start on: dates
+ * before a repo's first collection are "not tracked yet", not missing.
+ */
+function dayTotals(repos: DayMap[], starts: string[], date: string): SeriesPoint {
   let views = 0;
   let clones = 0;
   let present = 0;
-  for (const days of repos) {
+  let expected = 0;
+  repos.forEach((days, i) => {
+    if (starts[i]! > date) return;
+    expected++;
     const m = days.get(date);
-    if (!m) continue;
+    if (!m) return;
     views += m.views;
     clones += m.clones;
     present++;
-  }
+  });
   if (present === 0) return { date, views: null, clones: null, partial: false };
-  return { date, views, clones, partial: present < repos.length };
+  return { date, views, clones, partial: present < expected };
 }
 
 /**
- * Totals over the inclusive [start, end] range. A date counts as present if at
- * least one repo has a key for it, missing otherwise; partial dates also
- * count in `partialDays` so totals can be flagged incomplete.
+ * Each repo's tracking start: its earliest key. A repo with no keys at all
+ * (its first collection failed) gets "": its real start is unknown, so it is
+ * expected on every date of the scope's tracked range and still marks those
+ * days partial. Alone, it has no tracked range and sums to "no data".
  */
-function sumRange(repos: DayMap[], start: string | undefined, end: string): PeriodSum {
-  if (start === undefined || start > end) return noData();
+function trackingStarts(repos: DayMap[]): string[] {
+  return repos.map((days) => earliestDate(days) ?? "");
+}
+
+/**
+ * Totals over the inclusive [start, end] range, clipped to begin at the
+ * earliest key of any repo so days before tracking began are not "missing".
+ * A date counts as present if at least one repo has a key for it, missing
+ * otherwise; partial dates also count in `partialDays` so totals can be
+ * flagged incomplete.
+ */
+function sumRange(repos: DayMap[], start: string, end: string): PeriodSum {
+  const starts = trackingStarts(repos);
+  const first = starts.filter((d) => d !== "").sort()[0];
+  if (first === undefined) return noData();
+  if (start < first) start = first;
+  if (start > end) return noData();
   let views = 0;
   let clones = 0;
   let presentDays = 0;
   let missingDays = 0;
   let partialDays = 0;
   for (const date of enumerateDates(start, end)) {
-    const day = dayTotals(repos, date);
+    const day = dayTotals(repos, starts, date);
     if (day.views === null || day.clones === null) {
       missingDays++;
       continue;
@@ -140,29 +163,26 @@ function sumRange(repos: DayMap[], start: string | undefined, end: string): Peri
 
 /**
  * Single-repo sum. A numeric length covers [endDate - length + 1, endDate];
- * 'all' covers [this repo's earliest key, endDate].
+ * 'all' covers [this repo's earliest key, endDate]. Either way the range
+ * starts no earlier than the repo's earliest key.
  */
 export function sumPeriod(days: DayMap, endDate: string, length: number | "all"): PeriodSum {
-  const start = length === "all" ? earliestDate(days) : shiftDate(endDate, 1 - length);
-  return sumRange([days], start, endDate);
+  return sumRange([days], length === "all" ? "" : shiftDate(endDate, 1 - length), endDate);
 }
 
 /** Across repos; 'all' starts at the earliest key of any of them. */
 export function periodTotals(repos: DayMap[], endDate: string): PeriodTotals {
-  const earliest = repos
-    .map(earliestDate)
-    .filter((d) => d !== undefined)
-    .sort()[0];
   return {
     d7: sumRange(repos, shiftDate(endDate, -6), endDate),
     d30: sumRange(repos, shiftDate(endDate, -29), endDate),
-    all: sumRange(repos, earliest, endDate),
+    all: sumRange(repos, "", endDate),
   };
 }
 
 export function dailySeries(repos: DayMap[], endDate: string, length: number): SeriesPoint[] {
+  const starts = trackingStarts(repos);
   return enumerateDates(shiftDate(endDate, 1 - length), endDate).map((date) =>
-    dayTotals(repos, date),
+    dayTotals(repos, starts, date),
   );
 }
 

@@ -7,7 +7,8 @@
 export const CLIENT_LOGIC = String.raw`
 // Mirrors src/reporter/aggregate.ts: a date with no stored key is "no data"
 // (null), never 0; a multi-repo date where only some repos have a key is
-// "partial"; sums cover present days only and are flagged when incomplete.
+// "partial"; days before tracking began are neither; sums cover present days
+// only and are flagged when incomplete.
 const PERIOD_DAYS = { "7d": 7, "30d": 30, "90d": 90, all: "all" };
 const DAY_MS = 86400000;
 
@@ -29,19 +30,39 @@ function earliestDate(repos) {
   return min;
 }
 
-/** Inclusive range ending at end; "all" starts at the scope's earliest key. */
+/**
+ * Each repo's tracking start: its earliest key, or "" when it has none (its
+ * first collection failed), so it is expected on every date of the scope's
+ * range. Days before a repo's start are "not tracked yet": never missing,
+ * never partial.
+ */
+const trackingStarts = new Map();
+function trackingStart(repo) {
+  if (!trackingStarts.has(repo)) trackingStarts.set(repo, earliestDate([repo]) || "");
+  return trackingStarts.get(repo);
+}
+
+/**
+ * Inclusive range ending at end, starting no earlier than the scope's earliest
+ * key ("all" starts there).
+ */
 function periodRange(period, end, repos) {
   if (end === null) return null;
+  const first = earliestDate(repos);
+  if (first === null) return null;
   const length = PERIOD_DAYS[period];
-  const start = length === "all" ? earliestDate(repos) : shiftDate(end, 1 - length);
-  if (start === null || start > end) return null;
+  let start = length === "all" ? first : shiftDate(end, 1 - length);
+  if (start < first) start = first;
+  if (start > end) return null;
   return { start: start, end: end };
 }
 
-/** Sums over the repos that have the key; null when none do. */
+/** Sums over the repos that have the key; null when none do. total = repos already tracked on that date. */
 function dayPoint(repos, date) {
-  let views = 0, uniqueViews = 0, clones = 0, uniqueCloners = 0, present = 0;
+  let views = 0, uniqueViews = 0, clones = 0, uniqueCloners = 0, present = 0, total = 0;
   for (const repo of repos) {
+    if (trackingStart(repo) > date) continue;
+    total++;
     const m = repo.days[date];
     if (!m) continue;
     views += m[0];
@@ -51,9 +72,9 @@ function dayPoint(repos, date) {
     present++;
   }
   if (present === 0) {
-    return { date: date, views: null, uniqueViews: null, clones: null, uniqueCloners: null, present: 0, total: repos.length, partial: false };
+    return { date: date, views: null, uniqueViews: null, clones: null, uniqueCloners: null, present: 0, total: total, partial: false };
   }
-  return { date: date, views: views, uniqueViews: uniqueViews, clones: clones, uniqueCloners: uniqueCloners, present: present, total: repos.length, partial: present < repos.length };
+  return { date: date, views: views, uniqueViews: uniqueViews, clones: clones, uniqueCloners: uniqueCloners, present: present, total: total, partial: present < total };
 }
 
 function buildSeries(repos, range) {

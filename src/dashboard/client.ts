@@ -315,12 +315,13 @@ function renderChart(container, series, opts) {
   overlay.addEventListener("pointerleave", hide);
   root.addEventListener("blur", hide);
   root.addEventListener("keydown", function (e) {
-    const moves = { ArrowLeft: -1, ArrowRight: 1, Home: -n, End: n };
+    const moves = { ArrowLeft: -1, ArrowRight: 1 };
     if (e.key === "Escape") { hide(); return; }
-    if (!(e.key in moves)) return;
+    if (!(e.key in moves) && e.key !== "Home" && e.key !== "End") return;
     e.preventDefault();
-    const from = active < 0 ? n - 1 : active + moves[e.key];
-    show(Math.min(n - 1, Math.max(0, from)));
+    // Home/End jump regardless of focus state; an arrow on a fresh focus starts at the newest day
+    const to = e.key === "Home" ? 0 : e.key === "End" || active < 0 ? n - 1 : active + moves[e.key];
+    show(Math.min(n - 1, Math.max(0, to)));
   });
 }
 
@@ -388,7 +389,7 @@ function renderScope() {
   cards.appendChild(card("views", "Views", sum.views, sum, rangeText(range)));
   cards.appendChild(card("clones", "Clones", sum.clones, sum, rangeText(range)));
   cards.appendChild(card("coverage", "Days with data", days ? fmt.format(sum.presentDays) + " of " + fmt.format(days) : "—", null,
-    isIncomplete(sum) ? incompleteText(sum) : days ? "Complete" : "Nothing stored in this period"));
+    sum.presentDays === 0 ? "Nothing stored in this period" : isIncomplete(sum) ? incompleteText(sum) : "Complete"));
   if (anyGrowth) {
     [["stars", "Stars"], ["forks", "Forks"]].forEach(function (k) {
       const total = scope.reduce(function (n, r) { return n + r[k[0]]; }, 0);

@@ -52,6 +52,13 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git fetch --quiet https://github.com/zeikar/traffolio.git main
+            # a repository made from the template shares no history with it until its first update, which
+            # replaces files wholesale; that one is done by hand (README › Updating Traffolio) so its result
+            # can be reviewed before it is pushed
+            if ! git merge-base HEAD "$SHA" >/dev/null; then
+              echo "::error::$INSTANCE shares no history with Traffolio yet. Do its first update by hand as in README › Updating Traffolio; later runs merge normally."
+              exit 1
+            fi
             # --no-ff so the instance's own files can be restored before anything is committed
             if ! git merge --no-commit --no-ff "$SHA" && [ -z "$(git diff --name-only --diff-filter=U)" ]; then
               echo "::error::Could not merge $SHA into $INSTANCE."

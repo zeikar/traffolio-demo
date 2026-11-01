@@ -577,9 +577,9 @@ describe("data-through date", () => {
     const viewsTotals = readme.split("\n").find((l) => l.startsWith("| Views |"));
     expect(viewsTotals?.split("|")[2]?.trim()).toMatch(/^\d+$/); // 7d total complete: no "*"
 
-    // Only the first-run start edge (2026-10-12, before sample-web's window) is partial.
+    // 2026-10-12 precedes sample-web's window: not tracked yet for it, so not partial.
     const svg = await readText("assets/traffic.svg");
-    expect(countMatches(svg, /<circle class="partial"/g)).toBe(1 * 2);
+    expect(countMatches(svg, /<circle class="partial"/g)).toBe(0);
   });
 });
 

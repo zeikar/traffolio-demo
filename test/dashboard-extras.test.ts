@@ -159,7 +159,7 @@ describe("latest referrers", () => {
   });
 
   it("keeps the top 10 of the summed entries", () => {
-    const many = Array.from({ length: 12 }, (_, i) => [`r${String(i).padStart(2, "0")}`, i + 1, 1]);
+    const many = Array.from({ length: 12 }, (_, i): [string, number, number] => [`r${String(i).padStart(2, "0")}`, i + 1, 1]);
     const top = logic.latestReferrers([{ referrers: { date: "2026-10-20", referrers: many, paths: [] } } as Partial<Repo>, { referrers: null }])!;
     expect(top.referrers).toHaveLength(10);
     expect(top.referrers[0]!.referrer).toBe("r11");
