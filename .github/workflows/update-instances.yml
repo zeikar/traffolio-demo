@@ -1,0 +1,80 @@
+name: Update instances
+
+# Runs only in zeikar/traffolio: after CI passes on main, it merges that commit into the owner's
+# Traffolio instances the way "Updating Traffolio" in the README does; each instance keeps its own
+# config, README, data and charts. A repository made from the template can delete this file.
+# TRAFFOLIO_SYNC_TOKEN is a fine-grained token with Contents and Workflows write on the instances:
+# pushes made with GITHUB_TOKEN start no workflows, and it can't push a change to a workflow file.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: update-instances
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # CI also runs for pull requests, including ones from forks; only a push to this repository's
+    # main may be merged into the instances
+    if: >-
+      github.repository == 'zeikar/traffolio' &&
+      ((github.event_name == 'workflow_run' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name == 'zeikar/traffolio') ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        instance: [my-traffolio, traffolio-demo]
+    steps:
+      - name: Merge Traffolio into the instance
+        env:
+          INSTANCE: zeikar/${{ matrix.instance }}
+          TOKEN: ${{ secrets.TRAFFOLIO_SYNC_TOKEN }}
+          # the commit CI passed, not main's tip, which may not have been tested yet; a manual run takes the tip
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          set -euo pipefail
+          # the instance's daily collection can push in between, so a rejected push starts over once
+          for attempt in 1 2; do
+            rm -rf instance
+            git clone --quiet "https://x-access-token:$TOKEN@github.com/$INSTANCE.git" instance
+            cd instance
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git fetch --quiet https://github.com/zeikar/traffolio.git main
+            # --no-ff so the instance's own files can be restored before anything is committed
+            if ! git merge --no-commit --no-ff "$SHA" && [ -z "$(git diff --name-only --diff-filter=U)" ]; then
+              echo "::error::Could not merge $SHA into $INSTANCE."
+              exit 1
+            fi
+            for path in traffolio.config.yml README.md data assets; do
+              if git cat-file -e "HEAD:$path" 2>/dev/null; then git checkout HEAD -- "$path"; fi
+            done
+            if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+              echo "::error::Merge conflict in $INSTANCE outside its own files:"
+              git diff --name-only --diff-filter=U
+              exit 1
+            fi
+            if git diff --cached --quiet; then
+              echo "$INSTANCE is up to date"
+              exit 0
+            fi
+            git commit --quiet -m "Update Traffolio"
+            if git push --quiet origin HEAD; then
+              exit 0
+            fi
+            cd ..
+            echo "Push to $INSTANCE was rejected; retrying from a fresh clone."
+          done
+          echo "::error::Could not push the update to $INSTANCE."
+          exit 1
