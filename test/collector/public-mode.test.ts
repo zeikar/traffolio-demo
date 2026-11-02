@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseConfig } from "../../src/collector/config.js";
-import { checkPublicMode } from "../../src/collector/public-mode.js";
+import { checkPublicMode, listsPrivateRepository } from "../../src/collector/public-mode.js";
 import type { IndexEntry, IndexFile } from "../../src/types.js";
 
 const config = (yaml = "") => parseConfig(`public_mode: true\n${yaml}`);
@@ -22,6 +22,14 @@ function index(...entries: Partial<IndexEntry>[]): IndexFile {
   });
   return { schemaVersion: 1, repositories };
 }
+
+describe("listsPrivateRepository", () => {
+  it("is true only when an entry is private", () => {
+    expect(listsPrivateRepository(undefined)).toBe(false);
+    expect(listsPrivateRepository(index({}, { tracking: "missing" }))).toBe(false);
+    expect(listsPrivateRepository(index({}, { private: true }))).toBe(true);
+  });
+});
 
 describe("checkPublicMode", () => {
   it("passes with the defaults and no or only public stored data", () => {

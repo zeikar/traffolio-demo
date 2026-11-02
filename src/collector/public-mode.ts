@@ -9,6 +9,13 @@ export interface PublicModeViolation {
 
 export const PUBLIC_MODE_NO_EFFECT = "public_mode has no effect in a private repository.";
 
+export const PAGES_NO_EFFECT = "pages has no effect in a private repository; the dashboard is not published.";
+
+/** Whether stored data describes any private repository; such data must never be published. */
+export function listsPrivateRepository(index: IndexFile | undefined): boolean {
+  return Object.values(index?.repositories ?? {}).some((entry) => entry.private === true);
+}
+
 /**
  * Guards for a public Traffolio repository running with `public_mode: true`, checked before
  * anything is collected or written. Everything here ends up public, so no private repository
@@ -22,7 +29,7 @@ export function checkPublicMode(config: Config, prevIndex: IndexFile | undefined
       message: "Stopped (config); nothing written. ConfigError: include_private cannot be used with public_mode.",
     };
   }
-  if (Object.values(prevIndex?.repositories ?? {}).some((entry) => entry.private === true)) {
+  if (listsPrivateRepository(prevIndex)) {
     return {
       reason: "public_private_data",
       message:

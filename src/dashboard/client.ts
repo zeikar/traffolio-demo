@@ -121,7 +121,8 @@ function renderHeader() {
     badge.title = "Could not be collected on the last run (see data/status.json)";
     meta.appendChild(badge);
   }
-  byId("source").textContent = data.source;
+  // A published page (source null) has no source element.
+  if (data.source !== null) byId("source").textContent = data.source;
   byId("show-all-label").textContent =
     "Show excluded & missing (" + fmt.format(repos.length - tracked.length) + ")";
 }

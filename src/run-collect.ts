@@ -11,7 +11,7 @@ import type { GitHubClient } from "./collector/github-client.js";
 import { normalizeTraffic } from "./collector/normalize.js";
 import type { NormalizedTraffic } from "./collector/normalize.js";
 import { checkTrafficToken, decidePreflight, lookupSelfRepository } from "./collector/preflight.js";
-import { PUBLIC_MODE_NO_EFFECT, checkPublicMode } from "./collector/public-mode.js";
+import { PAGES_NO_EFFECT, PUBLIC_MODE_NO_EFFECT, checkPublicMode } from "./collector/public-mode.js";
 import { buildDashboardModel } from "./reporter/aggregate.js";
 import { MarkerError, assertMarkers, renderSection, replaceSection } from "./reporter/readme.js";
 import { readTopReferrers } from "./reporter/referrers.js";
@@ -72,6 +72,13 @@ type RepoOutcome =
 
 type SummaryBody = Omit<SummaryInput, "runStartedAt">;
 
+interface RunReport {
+  result: CollectResult;
+  summary: SummaryBody;
+  /** The dashboard may be published: public mode in a public repository, `pages: true`, and data was written. */
+  pages: boolean;
+}
+
 /** What the summary can still report when the run stops early. */
 interface Progress {
   counts?: SummaryCounts;
@@ -117,8 +124,9 @@ export async function runCollect(deps: CollectDeps): Promise<CollectResult> {
   const progress: Progress = { perRepoErrors: [] };
   let result: CollectResult;
   let summary: SummaryBody;
+  let pages = false;
   try {
-    ({ result, summary } = await collect(deps, startedAt.slice(0, 10), progress));
+    ({ result, summary, pages } = await collect(deps, startedAt.slice(0, 10), progress));
   } catch (err) {
     const fatal = err instanceof FatalError;
     deps.log(fatal ? err.message : `Stopped (unexpected); nothing written. ${describeError(err)}`);
@@ -129,6 +137,7 @@ export async function runCollect(deps: CollectDeps): Promise<CollectResult> {
   await setOutput("commit", String(result.commit), deps.env);
   await setOutput("outcome", result.outcome, deps.env);
   await setOutput("data_through", result.dataThroughDate ?? "", deps.env);
+  await setOutput("pages", String(pages), deps.env);
   await writeSummary(renderSummary({ runStartedAt: startedAt, ...summary }), deps.env);
   return result;
 }
@@ -137,7 +146,7 @@ async function collect(
   deps: CollectDeps,
   runDate: string,
   progress: Progress,
-): Promise<{ result: CollectResult; summary: SummaryBody }> {
+): Promise<RunReport> {
   const { env, fetch, sleep, now, log } = deps;
   const store = createStore(deps.rootDir);
 
@@ -165,6 +174,7 @@ async function collect(
     return {
       result: { exitCode: 0, outcome: "skipped", commit: false },
       summary: { outcome: "skipped", reason: "template", dataThroughDate: null, perRepoErrors: [] },
+      pages: false,
     };
   }
   if (decision.action === "fail") {
@@ -173,8 +183,9 @@ async function collect(
   if (decision.mode === "public") {
     const violation = checkPublicMode(config, await fatalOnError("unexpected", () => store.readIndex()));
     if (violation) throw new FatalError(violation.reason, violation.message);
-  } else if (config.public_mode) {
-    log(PUBLIC_MODE_NO_EFFECT);
+  } else {
+    if (config.public_mode) log(PUBLIC_MODE_NO_EFFECT);
+    if (config.pages) log(PAGES_NO_EFFECT);
   }
 
   const token = await fatalOnError("missing_token", () => checkTrafficToken(env));
@@ -218,6 +229,7 @@ async function collect(
   return {
     result: { exitCode: outcome === "partial" ? 2 : 0, outcome, commit, dataThroughDate },
     summary: { outcome, dataThroughDate, counts, extras: extras.summary, perRepoErrors: progress.perRepoErrors },
+    pages: decision.mode === "public" && config.pages,
   };
 }
 

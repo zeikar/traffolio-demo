@@ -107,7 +107,7 @@ describe("runCollect", () => {
       expect(await readFile(join(root, `assets/sparklines/${id}.svg`), "utf8")).toContain('<path class="views"');
     }
 
-    expect(await readFile(outputFile, "utf8")).toBe("commit=true\noutcome=ok\ndata_through=2026-10-25\n");
+    expect(await readFile(outputFile, "utf8")).toBe("commit=true\noutcome=ok\ndata_through=2026-10-25\npages=false\n");
 
     // The run timestamp appears in the summary only, never in committed files.
     const summary = await readFile(summaryFile, "utf8");

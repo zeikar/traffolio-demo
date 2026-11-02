@@ -4,6 +4,13 @@ All notable changes to Traffolio are listed here. Versions follow [Semantic Vers
 
 To update an existing Traffolio repository, see [Updating Traffolio](README.md#updating-traffolio).
 
+## [Unreleased]
+
+### Public mode
+
+- `pages: true` publishes the dashboard to GitHub Pages on each run, from the data the run committed. It only takes effect in a public repository with `public_mode: true`; set the repository's Pages source to GitHub Actions first (see [GitHub Pages dashboard](README.md#github-pages-dashboard)).
+- `npm run dashboard -- --public` builds that page locally: no local path in the header, and it refuses data that lists a private repository.
+
 ## [0.1.0] - 2026-11-01
 
 First release.
@@ -26,4 +33,5 @@ First release.
 
 - `public_mode: true` lets a public repository publish the traffic of selected public repositories. Private repositories can't be selected, and a repository that turns private stops being collected without revealing the change.
 
+[Unreleased]: https://github.com/zeikar/traffolio/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/zeikar/traffolio/releases/tag/v0.1.0

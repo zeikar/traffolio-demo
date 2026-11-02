@@ -243,7 +243,7 @@ const countMatches = (text: string, re: RegExp) => (text.match(re) ?? []).length
 
 function expectFatal(r: Run, reason: string) {
   expect(r.result).toEqual({ exitCode: 1, outcome: "fatal", commit: false });
-  expect(r.output).toBe("commit=false\noutcome=fatal\ndata_through=\n");
+  expect(r.output).toBe("commit=false\noutcome=fatal\ndata_through=\npages=false\n");
   expect(r.summary).toContain(`- Reason: ${reason}`);
 }
 
@@ -337,7 +337,7 @@ describe("template repository: skipped, exit 0", () => {
     const before = await snapshot();
     const r = await run({ routes: { [SELF_PATH]: () => json(fixtureText("self-repo-template")) } });
     expect(r.result).toEqual({ exitCode: 0, outcome: "skipped", commit: false });
-    expect(r.output).toBe("commit=false\noutcome=skipped\ndata_through=\n");
+    expect(r.output).toBe("commit=false\noutcome=skipped\ndata_through=\npages=false\n");
     expect(r.requested).toEqual([SELF_PATH]);
     expect(await snapshot()).toEqual(before);
   });
@@ -352,7 +352,7 @@ describe("partial failures", () => {
     const before = await snapshot();
     const r = await run({ routes: { [trafficPath("sample-web", "views")]: status(500) } });
     expect(r.result).toEqual({ exitCode: 2, outcome: "partial", commit: true, dataThroughDate: "2026-10-25" });
-    expect(r.output).toBe("commit=true\noutcome=partial\ndata_through=2026-10-25\n");
+    expect(r.output).toBe("commit=true\noutcome=partial\ndata_through=2026-10-25\npages=false\n");
     expect(r.sleeps).toEqual([500, 1000]);
 
     expect(changedPaths(before, await snapshot())).toEqual([
@@ -444,7 +444,7 @@ describe("idempotence and upsert", () => {
     const before = await seed();
     const r = await run();
     expect(r.result).toEqual({ exitCode: 0, outcome: "ok", commit: false, dataThroughDate: "2026-10-25" });
-    expect(r.output).toBe("commit=false\noutcome=ok\ndata_through=2026-10-25\n");
+    expect(r.output).toBe("commit=false\noutcome=ok\ndata_through=2026-10-25\npages=false\n");
     expect(await snapshot()).toEqual(before);
   });
 
@@ -597,7 +597,7 @@ describe("no traffic window", () => {
     const before = await snapshot();
     const r = await run({ routes: allSelectedTraffic(emptyTraffic) });
     expect(r.result).toEqual({ exitCode: 0, outcome: "ok", commit: true, dataThroughDate: null });
-    expect(r.output).toBe("commit=true\noutcome=ok\ndata_through=\n");
+    expect(r.output).toBe("commit=true\noutcome=ok\ndata_through=\npages=false\n");
 
     expect(changedPaths(before, await snapshot())).toEqual([
       "README.md",

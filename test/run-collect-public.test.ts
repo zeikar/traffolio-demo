@@ -47,6 +47,8 @@ const publicSelf = (repos: RepoListItem[]) => repos.map((r) => (r.id === 100008 
 interface RunOptions {
   self?: string;
   transformRepos?: (repos: RepoListItem[]) => RepoListItem[];
+  /** Name of a repository whose traffic requests fail with 500. */
+  failTrafficOf?: string;
 }
 
 interface Run {
@@ -73,7 +75,7 @@ afterEach(async () => {
 });
 
 async function run(options: RunOptions = {}): Promise<Run> {
-  const { self = "self-repo-public", transformRepos = publicSelf } = options;
+  const { self = "self-repo-public", transformRepos = publicSelf, failTrafficOf } = options;
   const fetch = vi.fn<typeof globalThis.fetch>(async (input) => {
     const url = new URL(String(input));
     if (url.pathname === SELF_PATH) return json(fixtureText(self));
@@ -84,6 +86,9 @@ async function run(options: RunOptions = {}): Promise<Run> {
       return json(JSON.stringify(repos), page === 1 ? { link: `<${PAGE2_URL}>; rel="next"` } : {});
     }
     const match = TRAFFIC_PATH.exec(url.pathname);
+    if (match && failTrafficOf && url.pathname.startsWith(`/repos/octo-sample/${failTrafficOf}/`)) {
+      return new Response('{"message":"Server Error"}', { status: 500 });
+    }
     if (match) return json(fixtureText(`traffic-${match[1]}`));
     return new Response('{"message":"Not Found"}', { status: 404 });
   });
@@ -133,7 +138,7 @@ const published = async (r: Run) => [...r.lines, r.output, r.summary, ...Object.
 
 function expectFatal(r: Run, reason: string) {
   expect(r.result).toEqual({ exitCode: 1, outcome: "fatal", commit: false });
-  expect(r.output).toBe("commit=false\noutcome=fatal\ndata_through=\n");
+  expect(r.output).toBe("commit=false\noutcome=fatal\ndata_through=\npages=false\n");
   expect(r.summary).toContain(`- Reason: ${reason}`);
 }
 
@@ -259,5 +264,70 @@ describe("private repository with public_mode: true", () => {
     const r = await run({ self: "self-repo-private", transformRepos: (repos) => repos });
     expect(r.result.outcome).toBe("ok");
     expect((await readdir(join(root, "data/traffic"))).sort()).toEqual([...SELECTED_IDS, "100007"]);
+  });
+});
+
+describe("pages output", () => {
+  const PAGES_CONFIG = `pages: true\n${PUBLIC_CONFIG}`;
+  const pagesLine = (r: Run) => r.output.split("\n").find((line) => line.startsWith("pages="));
+
+  beforeEach(async () => {
+    await writeFile(join(root, "traffolio.config.yml"), PAGES_CONFIG);
+  });
+
+  it("is true for a public-mode run with pages: true, also when nothing changed", async () => {
+    const r = await run();
+    expect(r.result.outcome).toBe("ok");
+    expect(r.output).toBe("commit=true\noutcome=ok\ndata_through=2026-10-25\npages=true\n");
+    const again = await run();
+    expect(again.result.commit).toBe(false);
+    expect(pagesLine(again)).toBe("pages=true");
+  });
+
+  it("is true for a partial run, whose committed data is already public", async () => {
+    const r = await run({ failTrafficOf: "sample-web" });
+    expect(r.result).toMatchObject({ exitCode: 2, outcome: "partial", commit: true });
+    expect(pagesLine(r)).toBe("pages=true");
+  });
+
+  it("is false without pages: true", async () => {
+    await writeFile(join(root, "traffolio.config.yml"), PUBLIC_CONFIG);
+    expect(pagesLine(await run())).toBe("pages=false");
+  });
+
+  it("is false when the run stops", async () => {
+    await writeFile(join(root, "traffolio.config.yml"), `${PAGES_CONFIG}  include_private: true\n`);
+    expectFatal(await run(), "config");
+
+    await writeFile(join(root, "traffolio.config.yml"), PAGES_CONFIG);
+    await seedIndex({
+      schemaVersion: 1,
+      repositories: {
+        "100007": {
+          name: "secret-notes",
+          fullName: "octo-sample/secret-notes",
+          private: true,
+          fork: false,
+          archived: false,
+          stars: 0,
+          forks: 0,
+          tracking: "tracked",
+        },
+      },
+    });
+    expectFatal(await run(), "public_private_data");
+  });
+
+  it("is false for the template repository", async () => {
+    const r = await run({ self: "self-repo-template" });
+    expect(r.result.outcome).toBe("skipped");
+    expect(pagesLine(r)).toBe("pages=false");
+  });
+
+  it("is false in a private repository, which logs that pages has no effect", async () => {
+    const r = await run({ self: "self-repo-private", transformRepos: (repos) => repos });
+    expect(r.result.outcome).toBe("ok");
+    expect(pagesLine(r)).toBe("pages=false");
+    expect(r.lines).toContain("pages has no effect in a private repository; the dashboard is not published.");
   });
 });

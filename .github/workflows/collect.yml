@@ -10,6 +10,13 @@
 # step failed with exit 2. Do NOT add `continue-on-error` to the collect step:
 # that would turn exit 2 green.
 #
+# GitHub Pages (public mode only): the collector prints `pages=true` only in a public
+# repository with `public_mode: true` and `pages: true`, on a run that wasn't fatal. The job
+# then builds the dashboard from the data it just pushed and uploads it, and the
+# `deploy-pages` job publishes it. A partial run (exit 2) deploys too, since its committed
+# data is already public; a failed commit or push deploys nothing. This is a job here, not a
+# push-triggered workflow, because pushes made with GITHUB_TOKEN start no other workflow.
+#
 # `pull_request_target` is intentionally absent: this workflow holds a
 # write-scoped token and a traffic-scoped PAT, and must never run on
 # untrusted pull request code.
@@ -32,6 +39,8 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      pages_artifact: ${{ steps.pages-upload.outputs.artifact_id }}
     steps:
       - uses: actions/checkout@v7
 
@@ -52,6 +61,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit
+        id: commit
         if: ${{ !cancelled() && steps.collect.outputs.commit == 'true' }}
         env:
           DATA_THROUGH: ${{ steps.collect.outputs.data_through }}
@@ -67,6 +77,7 @@ jobs:
           git commit -m "chore(data): update traffic through ${DATA_THROUGH} (UTC)"
 
       - name: Push
+        id: push
         if: ${{ !cancelled() && steps.collect.outputs.commit == 'true' }}
         run: |
           if git push; then
@@ -78,3 +89,34 @@ jobs:
           fi
           echo "::error::git push failed twice. Check branch protection rules (the default branch must allow github-actions[bot] to push) and concurrent pushes. See README > Troubleshooting."
           exit 1
+
+      # Outside the repository, so nothing generated can be committed.
+      - name: Build the public dashboard
+        id: pages-build
+        if: ${{ !cancelled() && steps.collect.outputs.pages == 'true' && steps.commit.outcome != 'failure' && steps.push.outcome != 'failure' }}
+        run: node dist/cli/dashboard.js --public --out "$RUNNER_TEMP/pages/index.html"
+
+      - name: Upload the public dashboard
+        id: pages-upload
+        if: ${{ !cancelled() && steps.pages-build.outcome == 'success' }}
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ runner.temp }}/pages
+
+  deploy-pages:
+    needs: collect
+    # Not success(): the collect job is red on a partial run (exit 2), which still deploys.
+    if: ${{ !cancelled() && needs.collect.outputs.pages_artifact != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # Fails until Settings > Pages > Source is "GitHub Actions" (README > Public mode).
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

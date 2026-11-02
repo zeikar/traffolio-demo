@@ -17,8 +17,11 @@ export interface DashboardInput {
   status: StatusFile;
   /** Stored days per repository id; repos without traffic may be absent. */
   days: Record<string, ReadonlyMap<string, DayMetrics>>;
-  /** Where the data was read from, shown in the page header. */
-  source: string;
+  /**
+   * Where the data was read from, shown in the header of a local build. `null`
+   * for a published page, which must carry no local information.
+   */
+  source: string | null;
   /** Per repository id; repos without the file are absent. */
   growth: Record<string, GrowthFile>;
   /** Each repository's newest referrer month file. */
@@ -52,7 +55,8 @@ export interface DashboardRepo {
 
 export interface DashboardData {
   dataThroughDate: string | null;
-  source: string;
+  /** See DashboardInput.source. */
+  source: string | null;
   /** Keyed by repository id. */
   repos: Record<string, DashboardRepo>;
 }
@@ -143,6 +147,11 @@ const CSP = [
   "form-action 'none'",
 ].join("; ");
 
+const LOCAL_NOTE =
+  '<p class="note">Generated locally from <code id="source"></code> &middot; contains private traffic data &mdash; don&rsquo;t commit or publish this file.</p>';
+const PUBLISHED_NOTE =
+  '<p class="note">Published by Traffolio in public mode. Every number here is public data, also stored as JSON in the publishing repository.</p>';
+
 /**
  * Self-contained page: static shell + embedded JSON + inline client script
  * that renders everything via textContent. No timestamps, so the same data
@@ -164,7 +173,7 @@ export function renderDashboardHtml(input: DashboardInput): string {
 <header class="top">
 <h1>Traffolio</h1>
 <p class="meta" id="meta"></p>
-<p class="note">Generated locally from <code id="source"></code> &middot; contains private traffic data &mdash; don&rsquo;t commit or publish this file.</p>
+${input.source === null ? PUBLISHED_NOTE : LOCAL_NOTE}
 </header>
 <noscript><p class="panel">Enable JavaScript to view the dashboard.</p></noscript>
 <section class="scopebar">

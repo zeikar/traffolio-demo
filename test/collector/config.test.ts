@@ -12,6 +12,7 @@ const defaults = {
     include_self: false,
   },
   public_mode: false,
+  pages: false,
 };
 
 describe("parseConfig", () => {
@@ -48,6 +49,11 @@ describe("parseConfig", () => {
   it("parses public_mode and rejects a non-boolean", () => {
     expect(parseConfig("public_mode: true\n").public_mode).toBe(true);
     expect(() => parseConfig("public_mode: 'yes'\n")).toThrow(/public_mode/);
+  });
+
+  it("parses pages and rejects a non-boolean", () => {
+    expect(parseConfig("pages: true\n").pages).toBe(true);
+    expect(() => parseConfig("pages: 'yes'\n")).toThrow(/pages/);
   });
 
   it("surfaces YAML syntax errors as ConfigError", () => {

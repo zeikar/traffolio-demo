@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { listsPrivateRepository } from "../collector/public-mode.js";
 import { type DayMap, daysFromMonthFiles } from "../reporter/aggregate.js";
 import { createStore } from "../storage/store.js";
 import type { GrowthFile, ReferrerMonthFile, ReleasesFile } from "../types.js";
@@ -12,14 +13,24 @@ export interface DashboardIo {
   error: (line: string) => void;
 }
 
-const USAGE = "usage: node dist/cli/dashboard.js [--data <rootDir>] [--out <file>]";
+const USAGE = "usage: node dist/cli/dashboard.js [--data <rootDir>] [--out <file>] [--public]";
 
-function parseArgs(argv: string[]): { data?: string; out?: string; help?: true } | string {
-  const args: { data?: string; out?: string; help?: true } = {};
+interface Args {
+  data?: string;
+  out?: string;
+  /** Build the page for publishing: no local path, and refused for data about private repositories. */
+  public?: true;
+  help?: true;
+}
+
+function parseArgs(argv: string[]): Args | string {
+  const args: Args = {};
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     if (arg === "--help" || arg === "-h") {
       args.help = true;
+    } else if (arg === "--public") {
+      args.public = true;
     } else if (arg === "--data" || arg === "--out") {
       const value = argv[++i];
       if (value === undefined || value.startsWith("--")) return `${arg} needs a value`;
@@ -56,6 +67,10 @@ export async function runDashboard(argv: string[], io: DashboardIo): Promise<num
     io.error(`no data yet — run a collection first (no data/index.json or data/status.json in ${rootDir})`);
     return 1;
   }
+  if (args.public && listsPrivateRepository(index)) {
+    io.error("refusing a public dashboard: data/index.json lists a private repository");
+    return 1;
+  }
 
   const days: Record<string, DayMap> = {};
   const growth: Record<string, GrowthFile> = {};
@@ -70,7 +85,7 @@ export async function runDashboard(argv: string[], io: DashboardIo): Promise<num
     const rel = await store.readReleases(id);
     if (rel) releases[id] = rel;
   }
-  const html = renderDashboardHtml({ index, status, days, growth, referrers, releases, source: join(rootDir, "data") });
+  const html = renderDashboardHtml({ index, status, days, growth, referrers, releases, source: args.public ? null : join(rootDir, "data") });
   await mkdir(dirname(out), { recursive: true });
   await writeFile(out, html, "utf8");
   io.log(pathToFileURL(out).href);
