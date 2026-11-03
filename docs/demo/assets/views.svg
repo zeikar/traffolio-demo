@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily views · last 30 days, Data through 2026-10-25 (UTC) · daily totals across tracked repos">
+<title>Traffolio: Daily views · last 30 days, Data through 2026-10-25 (UTC) · daily totals across tracked repos</title>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
+<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Daily views · last 30 days</text>
+<rect x="660" y="14" width="116" height="26" rx="6" fill="#fff8c5" stroke="#d4a72c"/>
+<text x="718" y="32" class="banner" text-anchor="middle">SAMPLE DATA</text>
+<line x1="24" y1="56" x2="42" y2="56" stroke="#0969da" stroke-width="2.5" stroke-linecap="round"/>
+<text x="48" y="60">Views</text>
+<circle cx="99" cy="56" r="3.5" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
+<text x="108" y="60">partial day — one or more tracked repos have no data for that date</text>
+<text x="56" y="266" text-anchor="end">0</text>
+<line x1="64" y1="169" x2="776" y2="169" stroke="#eaeef2" stroke-width="1"/>
+<text x="56" y="173" text-anchor="end">50</text>
+<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
+<text x="56" y="80" text-anchor="end">100</text>
+<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
+<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
+<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="64" y="280" text-anchor="middle">Sep 26</text>
+<line x1="236" y1="262" x2="236" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="236" y="280" text-anchor="middle">Oct 3</text>
+<line x1="408" y1="262" x2="408" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="408" y="280" text-anchor="middle">Oct 10</text>
+<line x1="580" y1="262" x2="580" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="580" y="280" text-anchor="middle">Oct 17</text>
+<line x1="751" y1="262" x2="751" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="751" y="280" text-anchor="middle">Oct 24</text>
+<path class="line views" d="M64 145 L89 178 L113 134 L138 197 L162 123 L187 117 L211 111 M334 106 L359 100 L383 95 L408 124 L432 121 L457 176 L481 145 L506 199 L530 169 L555 165 L580 162 L604 158 L629 154 L653 150 L678 147 L702 143 L727 188 L751 136 L776 210" fill="none" stroke="#0969da" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle class="partial" cx="408" cy="124" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="432" cy="121" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="457" cy="176" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="481" cy="145" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="506" cy="199" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="530" cy="169" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="555" cy="165" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="580" cy="162" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="604" cy="158" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="629" cy="154" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="653" cy="150" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="678" cy="147" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="702" cy="143" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="727" cy="188" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="751" cy="136" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<circle class="partial" cx="776" cy="210" r="3.5" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+<text x="24" y="304">Data through 2026-10-25 (UTC) · daily totals across tracked repos</text>
+</svg>

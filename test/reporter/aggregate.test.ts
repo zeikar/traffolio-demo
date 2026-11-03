@@ -5,6 +5,8 @@ import {
   dailySeries,
   daysFromMonthFiles,
   periodTotals,
+  REPO_SERIES_DAYS,
+  repoSeries,
   sumPeriod,
   type DashboardModel,
   type DayMap,
@@ -352,5 +354,25 @@ describe("buildDashboardModel without data", () => {
         });
       }
     }
+  });
+});
+
+describe("repoSeries", () => {
+  it("gives 90 points ending at the end date, null quadruples for gaps and untracked dates", () => {
+    const days = daysFromMonthFiles(files["100001"]!);
+    const got = repoSeries(days, "2026-10-25", REPO_SERIES_DAYS);
+    expect(got).toHaveLength(90);
+    expect(got[0]!.date).toBe("2026-07-28");
+    expect(got.at(-1)!.date).toBe("2026-10-25");
+    const empty = { views: null, uniqueViews: null, clones: null, uniqueCloners: null };
+    expect(got.filter((p) => p.date < "2026-09-20").every((p) => p.views === null)).toBe(true);
+    expect(got.find((p) => p.date === "2026-09-19")).toEqual({ date: "2026-09-19", ...empty });
+    for (const date of GAP) expect(got.find((p) => p.date === date)).toEqual({ date, ...empty });
+  });
+
+  it("carries the unique counts of the stored day", () => {
+    const days = daysFromMonthFiles(files["100001"]!);
+    const [point] = repoSeries(days, "2026-09-20", 1);
+    expect(point).toEqual({ date: "2026-09-20", ...days.get("2026-09-20")! });
   });
 });

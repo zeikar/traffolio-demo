@@ -219,8 +219,14 @@ describe("sample/real data separation", () => {
     }
   });
 
-  it("docs/demo/traffic.svg is labelled SAMPLE DATA", async () => {
-    expect(await readFile(join(repoRoot, "docs/demo/traffic.svg"), "utf8")).toContain("SAMPLE DATA");
+  it("every docs/demo chart except the sparklines is labelled SAMPLE DATA, every page *Sample data*", async () => {
+    const files = await filesUnder(join(repoRoot, "docs/demo"));
+    const charts = files.filter((f) => f.endsWith(".svg") && !f.includes("/assets/sparklines/"));
+    const pages = files.filter((f) => f.includes("/docs/demo/repos/") && f.endsWith(".md"));
+    expect(charts.length).toBeGreaterThanOrEqual(11);
+    expect(pages.length).toBe(3);
+    for (const file of charts) expect(await readFile(file, "utf8"), file).toContain("SAMPLE DATA");
+    for (const file of pages) expect(await readFile(file, "utf8"), file).toContain("*Sample data*");
   });
 
   it("demo CLI reads only fixtures/demo, never the repo-root data/", async () => {

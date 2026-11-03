@@ -4,7 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { CLIENT_SCRIPT } from "../src/dashboard/client.js";
+import { CLIENT_CHART } from "../src/dashboard/client-chart.js";
+import { CLIENT_SCRIPT, CLIENT_UI } from "../src/dashboard/client.js";
 import { CLIENT_LOGIC } from "../src/dashboard/client-logic.js";
 import {
   type DashboardData,
@@ -105,6 +106,22 @@ describe("renderDashboardHtml", () => {
   it("client script avoids sequences that would end the script element", () => {
     expect(CLIENT_SCRIPT.toLowerCase()).not.toContain("</script");
     expect(CLIENT_SCRIPT).not.toContain("<!--");
+  });
+
+  it("shows separate views and clones charts, with unique lines in the UI code", () => {
+    const html = renderDashboardHtml(demo);
+    for (const id of ["views-chart", "clones-chart", "views-legend", "clones-legend"]) {
+      expect(html).toContain(`id="${id}"`);
+    }
+    expect(html).not.toContain('id="chart"');
+    expect(CLIENT_UI).toContain('"-chart"');
+    expect(CLIENT_UI).toContain('"unique"');
+  });
+
+  it("includes the chart drawing code, which is safe to inline", () => {
+    expect(CLIENT_SCRIPT).toContain(CLIENT_CHART);
+    expect(CLIENT_CHART.toLowerCase()).not.toContain("</script");
+    expect(CLIENT_CHART).not.toContain("<!--");
   });
 });
 

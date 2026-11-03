@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars · last 90 days, Data through 2026-10-25 (UTC)">
+<title>Traffolio: Stars · last 90 days, Data through 2026-10-25 (UTC)</title>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
+<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Stars · last 90 days</text>
+<rect x="660" y="14" width="116" height="26" rx="6" fill="#fff8c5" stroke="#d4a72c"/>
+<text x="718" y="32" class="banner" text-anchor="middle">SAMPLE DATA</text>
+<line x1="24" y1="56" x2="42" y2="56" stroke="#bf8700" stroke-width="2.5" stroke-linecap="round"/>
+<text x="48" y="60">Stars</text>
+<text x="56" y="266" text-anchor="end">0</text>
+<line x1="64" y1="200" x2="776" y2="200" stroke="#eaeef2" stroke-width="1"/>
+<text x="56" y="204" text-anchor="end">20</text>
+<line x1="64" y1="138" x2="776" y2="138" stroke="#eaeef2" stroke-width="1"/>
+<text x="56" y="142" text-anchor="end">40</text>
+<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
+<text x="56" y="80" text-anchor="end">60</text>
+<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
+<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
+<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="64" y="280" text-anchor="middle">Jul 28</text>
+<line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="176" y="280" text-anchor="middle">Aug 11</text>
+<line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="288" y="280" text-anchor="middle">Aug 25</text>
+<line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="400" y="280" text-anchor="middle">Sep 8</text>
+<line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="512" y="280" text-anchor="middle">Sep 22</text>
+<line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="624" y="280" text-anchor="middle">Oct 6</text>
+<line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
+<text x="736" y="280" text-anchor="middle">Oct 20</text>
+<path class="line stars" d="M64 169 L72 169 L80 169 L88 169 L96 169 L104 169 L112 169 L120 169 L128 169 L136 169 L144 169 L152 169 L160 169 L168 169 L176 169 L184 169 L192 166 L200 166 L208 166 L216 163 L224 163 L232 163 L240 160 L248 160 L256 160 L264 160 L272 160 L280 160 L288 160 L296 157 L304 157 L312 157 L320 157 L328 157 L336 157 L344 157 L352 157 L360 157 L368 157 L376 154 L384 154 L392 154 L400 150 L408 150 L416 150 L424 150 L432 150 L440 150 L448 150 L456 150 L464 147 L472 147 L480 147 L488 147 L496 147 L504 147 L512 147 L520 147 L528 147 L536 144 L544 144 L552 144 L560 141 L568 141 L576 141 L584 141 L592 141 L600 141 L608 141 L616 141 L624 141 L632 141 L640 141 L648 141 L656 141 L664 141 L672 141 L680 141 L688 141 L696 141 L704 141 L712 141 L720 141 L728 141 L736 141 L744 138 L752 138 L760 135 L768 135 L776 132" fill="none" stroke="#bf8700" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="24" y="304">Data through 2026-10-25 (UTC)</text>
+</svg>

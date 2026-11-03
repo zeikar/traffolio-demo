@@ -61,10 +61,13 @@ code{font:12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:v
 .c-solo.clones,.c-dot.clones{fill:var(--clones)}
 .c-line.stars{stroke:var(--stars)}
 .c-solo.stars,.c-dot.stars{fill:var(--stars)}
+.c-line.unique{stroke:var(--muted);stroke-dasharray:4 3}
+.c-solo.unique,.c-dot.unique{fill:var(--muted)}
 .c-bar.downloads{fill:var(--downloads)}
 .c-partial{fill:var(--surface);stroke-width:1.5}
 .c-partial.views{stroke:var(--views)}
 .c-partial.clones{stroke:var(--clones)}
+.c-partial.unique{stroke:var(--muted)}
 .c-partial.legend-only{stroke:var(--muted)}
 .c-dot{stroke:var(--surface);stroke-width:2}
 .c-guide{stroke:var(--axis);stroke-width:1;stroke-dasharray:3 3}
@@ -80,6 +83,7 @@ code{font:12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:v
 .swatch{display:inline-block;width:8px;height:8px;border-radius:2px}
 .swatch.views{background:var(--views)}
 .swatch.clones{background:var(--clones)}
+.swatch.unique{background:var(--muted)}
 .swatch.stars{background:var(--stars)}
 .swatch.downloads{background:var(--downloads)}
 .tooltip div.t-sub{margin-top:2px;max-width:240px}

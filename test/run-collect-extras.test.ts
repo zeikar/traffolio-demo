@@ -210,6 +210,11 @@ describe("extras happy path", () => {
       snapshots: { "2026-10-27": { "9000001": 0, "9000002": 150, "9000003": 15 } },
     });
 
+    expect(before["repos/100001.md"]).toContain("## Release downloads (as of 2026-10-27)");
+    expect(before["repos/100001.md"]).toContain("## Stars and forks");
+    // 100002's growth file is empty: the chart is the placeholder, but it exists.
+    for (const id of ["100001", "100002", "100003"]) expect(before[`assets/repos/${id}/stars.svg`]).toBeDefined();
+
     const readme = before["README.md"]!;
     expect(readme).toContain("#### Top referrers (last 14 days as of 2026-10-27, UTC)");
     expect(readme).toContain("| github.com | 192 |");
@@ -279,6 +284,9 @@ describe("extras happy path", () => {
       "data/referrers/100002/2026-10.json",
       "data/referrers/100003/2026-10.json",
       "data/releases/100001.json",
+      "repos/100001.md",
+      "repos/100002.md",
+      "repos/100003.md",
     ]);
     const referrers = await readJson<ReferrerMonthFile>("data/referrers/100002/2026-10.json");
     expect(Object.keys(referrers.snapshots)).toEqual(["2026-10-27", "2026-10-28"]);

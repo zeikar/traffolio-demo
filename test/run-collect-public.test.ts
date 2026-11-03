@@ -238,6 +238,9 @@ describe("public repository with public_mode: true", () => {
     expect(after["data/traffic/100002/2026-10.json"]).toBe(before["data/traffic/100002/2026-10.json"]);
 
     for (const text of await published(r)) expect(text).not.toContain("hidden-web");
+    const page = (await snapshot())["repos/100002.md"]!;
+    expect(page).toContain("Status: missing");
+    expect(page).toContain("octo-sample/sample-web");
     for (const line of r.lines) expect(line).not.toContain("sample-web");
     expect(r.summary).not.toContain("sample-web");
   });

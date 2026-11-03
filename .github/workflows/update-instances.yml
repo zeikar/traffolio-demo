@@ -64,7 +64,7 @@ jobs:
               echo "::error::Could not merge $SHA into $INSTANCE."
               exit 1
             fi
-            for path in traffolio.config.yml README.md data assets; do
+            for path in traffolio.config.yml README.md data assets repos; do
               if git cat-file -e "HEAD:$path" 2>/dev/null; then git checkout HEAD -- "$path"; fi
             done
             if [ -n "$(git diff --name-only --diff-filter=U)" ]; then

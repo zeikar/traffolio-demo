@@ -66,6 +66,16 @@ export interface DashboardModel {
 }
 
 export const SERIES_DAYS = 30;
+export const REPO_SERIES_DAYS = 90;
+
+/** One repository's day with the unique counts; all four `null` when the date has no key. */
+export interface RepoSeriesPoint {
+  date: string;
+  views: number | null;
+  uniqueViews: number | null;
+  clones: number | null;
+  uniqueCloners: number | null;
+}
 
 const noData = (missingDays = 0): PeriodSum => ({
   views: null,
@@ -83,7 +93,7 @@ export function daysFromMonthFiles(files: MonthFile[]): DayMap {
   return days;
 }
 
-function shiftDate(date: string, deltaDays: number): string {
+export function shiftDate(date: string, deltaDays: number): string {
   return new Date(Date.parse(`${date}T00:00:00Z`) + deltaDays * 86_400_000)
     .toISOString()
     .slice(0, 10);
@@ -184,6 +194,19 @@ export function dailySeries(repos: DayMap[], endDate: string, length: number): S
   return enumerateDates(shiftDate(endDate, 1 - length), endDate).map((date) =>
     dayTotals(repos, starts, date),
   );
+}
+
+/**
+ * A single repository's last `length` days ending at `endDate`. A date without a key is `null`
+ * whether it is missing or before tracking began: neither draws anything, never a 0.
+ */
+export function repoSeries(days: DayMap, endDate: string, length: number): RepoSeriesPoint[] {
+  return enumerateDates(shiftDate(endDate, 1 - length), endDate).map((date) => {
+    const m = days.get(date);
+    return m
+      ? { date, views: m.views, uniqueViews: m.uniqueViews, clones: m.clones, uniqueCloners: m.uniqueCloners }
+      : { date, views: null, uniqueViews: null, clones: null, uniqueCloners: null };
+  });
 }
 
 /**

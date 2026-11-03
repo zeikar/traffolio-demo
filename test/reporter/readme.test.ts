@@ -29,14 +29,23 @@ beforeAll(async () => {
 });
 
 const opts = {
-  svgPath: "./traffic.svg",
+  viewsSvgPath: "./views.svg",
+  clonesSvgPath: "./clones.svg",
   sparklinePath: (id: string) => `./sparklines/${id}.svg`,
+  repoPagePath: (id: string) => `repos/${id}.md`,
   sampleLabel: false,
 };
 const rowLine = (s: string, name: string) =>
   s.split("\n").find((l) => l.includes(`/${name}]`))!;
 
 describe("renderSection", () => {
+  it("links the repository cell to its page, then to GitHub", () => {
+    const line = rowLine(renderSection(model, opts), "sample-cli");
+    expect(line.split("|")[1]!.trim()).toBe(
+      "[octo-sample/sample-cli](repos/100001.md) · [GitHub](https://github.com/octo-sample/sample-cli)",
+    );
+  });
+
   it("has the data-through heading, totals, failed line, image and notes", () => {
     const s = renderSection(model, opts);
     expect(s).toContain(`Data through ${model.dataThroughDate} (UTC)`);
@@ -62,7 +71,7 @@ describe("renderSection", () => {
   it("puts a per-row trend sparkline right after the repository", () => {
     const s = renderSection(model, opts);
     expect(s).toContain(
-      "| Repository | Trend (30d) | Visibility | Views 7d |",
+      "| Repository | Views trend (30d) | Visibility | Views 7d |",
     );
     expect(s).toContain("| --- | --- | --- | ---: |");
     for (const row of model.rows) {
@@ -91,9 +100,14 @@ describe("renderSection", () => {
   });
 
   it("embeds the image path verbatim", () => {
-    expect(
-      renderSection(model, { ...opts, svgPath: "docs/a b/x.svg" }),
-    ).toContain("![Traffic over the last 30 days](docs/a b/x.svg)");
+    const s = renderSection(model, {
+      ...opts,
+      viewsSvgPath: "docs/a b/v.svg",
+      clonesSvgPath: "docs/a b/c.svg",
+    });
+    expect(s).toContain(
+      "![Views over the last 30 days](docs/a b/v.svg)\n![Clones over the last 30 days](docs/a b/c.svg)",
+    );
   });
 
   it("renders the no-data heading without a totals table", () => {
@@ -138,7 +152,7 @@ describe("renderSection", () => {
     expect(s).toContain("#### Top referrers (last 14 days as of 2026-10-27, UTC)");
     expect(s).toContain("| Referrer | Views from referrer |");
     expect(s).toContain("| a\\|b.example | 7 |");
-    expect(s.indexOf("Top referrers")).toBeGreaterThan(s.indexOf("![Traffic over the last 30 days]"));
+    expect(s.indexOf("Top referrers")).toBeGreaterThan(s.indexOf("![Clones over the last 30 days]"));
     expect(renderSection(model, opts)).not.toContain("Top referrers");
     expect(renderSection(model, { ...opts, topReferrers: null })).not.toContain("Top referrers");
   });

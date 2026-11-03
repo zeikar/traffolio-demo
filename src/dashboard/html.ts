@@ -187,8 +187,14 @@ ${input.source === null ? PUBLISHED_NOTE : LOCAL_NOTE}
 </section>
 <section class="cards" id="cards" aria-live="polite"></section>
 <section class="panel">
-<div class="legend" id="legend"></div>
-<div class="chart" id="chart"></div>
+<div class="panelhead"><h2>Views</h2></div>
+<div class="legend" id="views-legend"></div>
+<div class="chart" id="views-chart"></div>
+</section>
+<section class="panel">
+<div class="panelhead"><h2>Clones</h2></div>
+<div class="legend" id="clones-legend"></div>
+<div class="chart" id="clones-chart"></div>
 </section>
 <section class="panel" id="stars-panel" hidden>
 <div class="panelhead"><h2>Stars over time</h2><p id="stars-sub"></p></div>
@@ -218,12 +224,12 @@ ${input.source === null ? PUBLISHED_NOTE : LOCAL_NOTE}
 </div>
 <div class="tablewrap">
 <table>
-<caption class="sr-only">Repositories. Select a row to show its daily chart.</caption>
+<caption class="sr-only">Repositories. Select a row to show its daily charts.</caption>
 <thead><tr id="head"></tr></thead>
 <tbody id="body"></tbody>
 </table>
 </div>
-<p class="foot"><span class="mark">*</span> Includes days with no stored data, or where some repositories have none; the sum covers only the data we have. &mdash; means no stored data for the period. Select a row to see its daily chart.</p>
+<p class="foot"><span class="mark">*</span> Includes days with no stored data, or where some repositories have none; the sum covers only the data we have. &mdash; means no stored data for the period. Select a row to see its daily charts.</p>
 </section>
 <footer>All dates and windows are UTC. Views and clones are event counts, not unique users.</footer>
 </main>

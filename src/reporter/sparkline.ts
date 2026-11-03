@@ -5,7 +5,7 @@ const WIDTH = 120;
 const HEIGHT = 28;
 const PLOT = { left: 5, right: 115, top: 5, bottom: 23 };
 // Generic on purpose: the file sits next to the README, so it must not carry a repo name.
-const TITLE = "30-day views and clones";
+const TITLE = "30-day views";
 
 const n = (value: number): string => value.toFixed(1);
 
@@ -22,12 +22,13 @@ function svgDocument(label: string, body: string[]): string {
 }
 
 /**
- * One repo's daily views/clones as a tiny two-line chart on a shared 0–max
- * scale (all-zero stays on the baseline). Missing days break the line as in
- * the main chart; a series with no stored day renders a "no data" dash.
+ * One repo's daily views as a tiny line chart on a 0–max scale (all-zero stays
+ * on the baseline). Clones are left out so large clone counts can't flatten
+ * the views line. Missing days break the line as in the main chart; a series
+ * with no stored day renders a "no data" dash.
  */
 export function renderSparklineSvg(series: SeriesPoint[]): string {
-  const values = series.flatMap((p) => [p.views, p.clones]).filter((v) => v !== null);
+  const values = series.map((p) => p.views).filter((v) => v !== null);
   if (values.length === 0) {
     const mid = HEIGHT / 2;
     return svgDocument(`${TITLE}: no data`, [
@@ -46,22 +47,21 @@ export function renderSparklineSvg(series: SeriesPoint[]): string {
     `<line x1="${n(PLOT.left)}" y1="${n(PLOT.bottom)}" x2="${n(PLOT.right)}" y2="${n(PLOT.bottom)}" stroke="#eaeef2" stroke-width="1"/>`,
   ];
   const solos: string[] = [];
-  for (const metric of METRICS) {
-    const value = (i: number): number => series[i]![metric.key]!;
-    const subpaths = runs(series, metric.key).map((run) => {
-      const [first, ...rest] = run.map((i) => `${n(xAt(i))} ${n(yAt(value(i)))}`);
-      if (run.length === 1) {
-        const i = run[0]!;
-        solos.push(`<circle class="solo" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="1.5" fill="${metric.color}"/>`);
-        return `M${first} L${first}`;
-      }
-      return `M${first} ${rest.map((p) => `L${p}`).join(" ")}`;
-    });
-    if (subpaths.length > 0) {
-      body.push(
-        `<path class="${metric.key}" d="${subpaths.join(" ")}" fill="none" stroke="${metric.color}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>`,
-      );
+  const color = METRICS[0].color;
+  const value = (i: number): number => series[i]!.views!;
+  const subpaths = runs(series, "views").map((run) => {
+    const [first, ...rest] = run.map((i) => `${n(xAt(i))} ${n(yAt(value(i)))}`);
+    if (run.length === 1) {
+      const i = run[0]!;
+      solos.push(`<circle class="solo" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="1.5" fill="${color}"/>`);
+      return `M${first} L${first}`;
     }
+    return `M${first} ${rest.map((p) => `L${p}`).join(" ")}`;
+  });
+  if (subpaths.length > 0) {
+    body.push(
+      `<path class="views" d="${subpaths.join(" ")}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>`,
+    );
   }
   return svgDocument(TITLE, [...body, ...solos]);
 }

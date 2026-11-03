@@ -12,13 +12,10 @@ import { normalizeTraffic } from "./collector/normalize.js";
 import type { NormalizedTraffic } from "./collector/normalize.js";
 import { checkTrafficToken, decidePreflight, lookupSelfRepository } from "./collector/preflight.js";
 import { PAGES_NO_EFFECT, PUBLIC_MODE_NO_EFFECT, checkPublicMode } from "./collector/public-mode.js";
-import { buildDashboardModel } from "./reporter/aggregate.js";
-import { MarkerError, assertMarkers, renderSection, replaceSection } from "./reporter/readme.js";
-import { readTopReferrers } from "./reporter/referrers.js";
-import { renderSparklineSvg } from "./reporter/sparkline.js";
+import { renderOutputs } from "./reporter/outputs.js";
+import { MarkerError, assertMarkers, replaceSection } from "./reporter/readme.js";
 import { renderSummary, repoErrorLabel } from "./reporter/summary.js";
 import type { RepoErrorEntry, SummaryCounts, SummaryInput } from "./reporter/summary.js";
-import { renderTrafficSvg } from "./reporter/svg.js";
 import { updateIndex, updateStatus } from "./storage/index-status.js";
 import type { RepoResult } from "./storage/index-status.js";
 import { upsertDays } from "./storage/merge.js";
@@ -84,9 +81,6 @@ interface Progress {
   counts?: SummaryCounts;
   perRepoErrors: RepoErrorEntry[];
 }
-
-const SVG_PATH = "assets/traffic.svg";
-const sparklinePath = (id: string): string => `assets/sparklines/${id}.svg`;
 
 const VISIBILITY_MESSAGES = {
   undeterminable:
@@ -312,24 +306,17 @@ async function writeResults(
     touchedMonths.push(...merged.filter((file) => months.has(file.month)));
   }
 
-  const model = buildDashboardModel(index, status, monthFilesByRepo);
-  const svg = renderTrafficSvg(model.series, { sampleLabel: false });
-  const sparklines = model.rows.map((row) => [sparklinePath(row.id), renderSparklineSvg(row.series)] as const);
-  const topReferrers = await readTopReferrers(store, index, extras.referrers);
-  const nextReadme = replaceSection(
-    readme,
-    renderSection(model, { svgPath: SVG_PATH, sparklinePath, sampleLabel: false, topReferrers }),
-  );
+  const outputs = await renderOutputs({ store, index, status, monthFilesByRepo, computed: extras, sampleLabel: false });
+  const nextReadme = replaceSection(readme, outputs.section);
 
   const changed: boolean[] = [];
   for (const file of touchedMonths) changed.push(await store.writeMonthFile(file));
   changed.push(
     await store.writeIndex(index),
     await store.writeStatus(status),
-    await store.writeTextFile(SVG_PATH, svg),
     await store.writeTextFile("README.md", nextReadme),
   );
-  for (const [path, text] of sparklines) changed.push(await store.writeTextFile(path, text));
+  for (const [path, text] of outputs.files) changed.push(await store.writeTextFile(path, text));
   changed.push(...(await writeExtras(store, extras)));
   return { commit: changed.includes(true), dataThroughDate: status.dataThroughDate };
 }

@@ -96,12 +96,18 @@ describe("runCollect", () => {
     expect(readme).toContain("My footer.");
     expect(readme).toContain("### Traffic — Data through 2026-10-25 (UTC)");
     expect(readme).not.toContain("placeholder");
-    expect((await stat(join(root, "assets/traffic.svg"))).isFile()).toBe(true);
+    expect((await stat(join(root, "assets/views.svg"))).isFile()).toBe(true);
+    expect((await stat(join(root, "assets/clones.svg"))).isFile()).toBe(true);
+    await expect(stat(join(root, "assets/traffic.svg"))).rejects.toThrow();
     expect((await readdir(join(root, "assets/sparklines"))).sort()).toEqual([
       "100001.svg",
       "100002.svg",
       "100003.svg",
     ]);
+    expect((await readdir(join(root, "repos"))).sort()).toEqual(["100001.md", "100002.md", "100003.md"]);
+    // The extras endpoints 404 in this test: no growth data, so no stars chart.
+    expect((await readdir(join(root, "assets/repos/100001"))).sort()).toEqual(["clones.svg", "views.svg"]);
+    expect(readme).toContain("](repos/100001.md)");
     for (const id of ["100001", "100002", "100003"]) {
       expect(readme).toContain(`![trend](assets/sparklines/${id}.svg)`);
       expect(await readFile(join(root, `assets/sparklines/${id}.svg`), "utf8")).toContain('<path class="views"');

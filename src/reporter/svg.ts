@@ -1,6 +1,23 @@
-import type { SeriesPoint } from "./aggregate.js";
+import type { RepoSeriesPoint, SeriesPoint } from "./aggregate.js";
 
-export interface TrafficSvgOptions {
+export interface ChartLine {
+  /** CSS class suffix: the path gets `class="line <key>"`. */
+  key: string;
+  label: string;
+  color: string;
+  /** One value per date; `null` is a missing day and breaks the line. */
+  values: (number | null)[];
+  dashed?: boolean;
+}
+
+export interface ChartSpec {
+  title: string;
+  dates: string[];
+  lines: ChartLine[];
+  /** Per date: some tracked repos have no data. Omit for charts without partial days. */
+  partial?: boolean[];
+  footer: string;
+  emptyText: string;
   /** Adds a `SAMPLE DATA` banner (demo output). */
   sampleLabel: boolean;
 }
@@ -16,7 +33,6 @@ export const METRICS = [
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
-const TITLE = "Daily views & clones · last 30 days";
 
 // Explicit light card + system fonts only: the SVG is shown through <img> on
 // GitHub, which blocks external resources and doesn't follow the page theme.
@@ -35,8 +51,8 @@ function escapeXml(text: string): string {
     .replace(/'/g, "&apos;");
 }
 
-/** Fixed one-decimal coordinates keep the output byte-stable. */
-const n = (value: number): string => value.toFixed(1);
+/** Integer coordinates keep the output byte-stable and small; sub-pixel precision is invisible. */
+const n = (value: number): string => String(Math.round(value));
 
 const groupDigits = (value: number): string => String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -57,8 +73,8 @@ function text(x: number, y: number, content: string, attrs = ""): string {
   return `<text x="${n(x)}" y="${n(y)}"${attrs}>${escapeXml(content)}</text>`;
 }
 
-function header(sampleLabel: boolean): string[] {
-  const parts = [text(24, 32, TITLE, ' class="title"')];
+function header(title: string, sampleLabel: boolean): string[] {
+  const parts = [text(24, 32, title, ' class="title"')];
   if (sampleLabel) {
     parts.push(
       `<rect x="660" y="14" width="116" height="26" rx="6" fill="#fff8c5" stroke="#d4a72c"/>`,
@@ -68,21 +84,24 @@ function header(sampleLabel: boolean): string[] {
   return parts;
 }
 
-function legend(): string[] {
+function legend(lines: ChartLine[], showPartial: boolean): string[] {
   const y = 56;
   const parts: string[] = [];
   let x = 24;
-  for (const metric of METRICS) {
+  for (const line of lines) {
+    const dash = line.dashed ? ' stroke-dasharray="4 3"' : "";
     parts.push(
-      `<line x1="${n(x)}" y1="${n(y)}" x2="${n(x + 18)}" y2="${n(y)}" stroke="${metric.color}" stroke-width="2.5" stroke-linecap="round"/>`,
-      text(x + 24, y + 4, metric.label),
+      `<line x1="${n(x)}" y1="${n(y)}" x2="${n(x + 18)}" y2="${n(y)}" stroke="${line.color}" stroke-width="2.5" stroke-linecap="round"${dash}/>`,
+      text(x + 24, y + 4, line.label),
     );
-    x += 84;
+    x += 40 + line.label.length * 6;
   }
-  parts.push(
-    `<circle cx="${n(x + 5)}" cy="${n(y)}" r="3.5" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>`,
-    text(x + 14, y + 4, "partial day — one or more tracked repos have no data for that date"),
-  );
+  if (showPartial) {
+    parts.push(
+      `<circle cx="${n(x + 5)}" cy="${n(y)}" r="3.5" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>`,
+      text(x + 14, y + 4, "partial day — one or more tracked repos have no data for that date"),
+    );
+  }
   return parts;
 }
 
@@ -106,12 +125,11 @@ function svgDocument(label: string, body: string[]): string {
   ].join("\n");
 }
 
-/** Contiguous runs of indices whose value for `key` is non-null. */
-export function runs(series: SeriesPoint[], key: "views" | "clones"): number[][] {
+function valueRuns(values: (number | null)[]): number[][] {
   const result: number[][] = [];
   let current: number[] = [];
-  series.forEach((point, i) => {
-    if (point[key] === null) {
+  values.forEach((value, i) => {
+    if (value === null) {
       if (current.length > 0) result.push(current);
       current = [];
     } else {
@@ -122,37 +140,42 @@ export function runs(series: SeriesPoint[], key: "views" | "clones"): number[][]
   return result;
 }
 
+/** Contiguous runs of indices whose value for `key` is non-null. */
+export function runs(series: SeriesPoint[], key: "views" | "clones"): number[][] {
+  return valueRuns(series.map((point) => point[key]));
+}
+
 /**
- * Daily views/clones line chart. Each contiguous run of non-null days is its
+ * Generic single-axis line chart. Each contiguous run of non-null days is its
  * own `M…L…` subpath so missing days show as a break, never as 0. An isolated
  * day is a zero-length `L` (dot via round caps) plus a filled `circle.solo`
  * so it stays visible in renderers that drop zero-length segments.
  */
-export function renderTrafficSvg(series: SeriesPoint[], options: TrafficSvgOptions): string {
-  const head = header(options.sampleLabel);
+export function renderChartSvg(spec: ChartSpec): string {
+  const { dates, lines } = spec;
+  const head = header(spec.title, spec.sampleLabel);
+  const allValues = lines.flatMap((line) => line.values.filter((v) => v !== null));
 
-  if (series.length === 0) {
-    return svgDocument(`Traffolio: ${TITLE} — no traffic data stored yet`, [
+  if (dates.length === 0 || allValues.length === 0) {
+    return svgDocument(`Traffolio: ${spec.title} — ${spec.emptyText.toLowerCase()}`, [
       ...head,
       ...axes(),
       text(
         (PLOT.left + PLOT.right) / 2,
         (PLOT.top + PLOT.bottom) / 2,
-        "No traffic data stored yet",
+        spec.emptyText,
         ' class="empty" text-anchor="middle"',
       ),
-      text(24, FOOTER_Y, "Dates in UTC · daily totals across tracked repos"),
+      text(24, FOOTER_Y, spec.footer),
     ]);
   }
 
-  const lastDate = series[series.length - 1]!.date;
-  const values = series.flatMap((p) => [p.views ?? 0, p.clones ?? 0]);
-  const { max, step } = yScale(Math.max(...values));
+  const { max, step } = yScale(Math.max(...allValues));
   const plotWidth = PLOT.right - PLOT.left;
   const xAt = (i: number): number =>
-    series.length === 1
+    dates.length === 1
       ? PLOT.left + plotWidth / 2
-      : PLOT.left + (i * plotWidth) / (series.length - 1);
+      : PLOT.left + (i * plotWidth) / (dates.length - 1);
   const yAt = (v: number): number => PLOT.bottom - (v / max) * (PLOT.bottom - PLOT.top);
 
   const grid: string[] = [];
@@ -166,51 +189,142 @@ export function renderTrafficSvg(series: SeriesPoint[], options: TrafficSvgOptio
     grid.push(text(PLOT.left - 8, y + 4, groupDigits(v), ' text-anchor="end"'));
   }
 
+  const tickEvery = dates.length <= 35 ? 7 : 14;
   const xTicks: string[] = [];
-  for (let i = 0; i < series.length; i += 7) {
+  for (let i = 0; i < dates.length; i += tickEvery) {
     const x = xAt(i);
     xTicks.push(
       `<line x1="${n(x)}" y1="${n(PLOT.bottom)}" x2="${n(x)}" y2="${n(PLOT.bottom + 4)}" stroke="#8c959f" stroke-width="1"/>`,
-      text(x, PLOT.bottom + 18, shortDate(series[i]!.date), ' text-anchor="middle"'),
+      text(x, PLOT.bottom + 18, shortDate(dates[i]!), ' text-anchor="middle"'),
     );
   }
 
-  const lines: string[] = [];
+  const paths: string[] = [];
   const markers: string[] = [];
-  for (const metric of METRICS) {
-    const value = (i: number): number => series[i]![metric.key]!;
-    const subpaths = runs(series, metric.key).map((run) => {
+  for (const line of lines) {
+    const value = (i: number): number => line.values[i]!;
+    const subpaths = valueRuns(line.values).map((run) => {
       const [first, ...rest] = run.map((i) => `${n(xAt(i))} ${n(yAt(value(i)))}`);
       if (run.length === 1) {
         const i = run[0]!;
         markers.push(
-          `<circle class="solo" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="2.5" fill="${metric.color}"/>`,
+          `<circle class="solo" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="2.5" fill="${line.color}"/>`,
         );
         return `M${first} L${first}`;
       }
       return `M${first} ${rest.map((p) => `L${p}`).join(" ")}`;
     });
     if (subpaths.length > 0) {
-      lines.push(
-        `<path class="line ${metric.key}" d="${subpaths.join(" ")}" fill="none" stroke="${metric.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`,
+      const dash = line.dashed ? ' stroke-dasharray="4 3"' : "";
+      paths.push(
+        `<path class="line ${line.key}" d="${subpaths.join(" ")}" fill="none" stroke="${line.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"${dash}/>`,
       );
     }
-    series.forEach((point, i) => {
-      if (!point.partial || point[metric.key] === null) return;
+    spec.partial?.forEach((isPartial, i) => {
+      if (!isPartial || line.values[i] === null || line.values[i] === undefined) return;
       markers.push(
-        `<circle class="partial" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="3.5" fill="#ffffff" stroke="${metric.color}" stroke-width="1.5"/>`,
+        `<circle class="partial" cx="${n(xAt(i))}" cy="${n(yAt(value(i)))}" r="3.5" fill="#ffffff" stroke="${line.color}" stroke-width="1.5"/>`,
       );
     });
   }
 
-  return svgDocument(`Traffolio: ${TITLE}, data through ${lastDate} (UTC)`, [
+  return svgDocument(`Traffolio: ${spec.title}, ${spec.footer}`, [
     ...head,
-    ...legend(),
+    ...legend(lines, spec.partial !== undefined),
     ...grid,
     ...axes(),
     ...xTicks,
-    ...lines,
+    ...paths,
     ...markers,
-    text(24, FOOTER_Y, `Data through ${lastDate} (UTC) · daily totals across tracked repos`),
+    text(24, FOOTER_Y, spec.footer),
   ]);
+}
+
+function readmeChart(
+  series: SeriesPoint[],
+  metric: (typeof METRICS)[number],
+  title: string,
+  sampleLabel: boolean,
+): string {
+  const lastDate = series[series.length - 1]?.date;
+  return renderChartSvg({
+    title,
+    dates: series.map((p) => p.date),
+    lines: [{ ...metric, values: series.map((p) => p[metric.key]) }],
+    partial: series.map((p) => p.partial),
+    footer:
+      lastDate === undefined
+        ? "Dates in UTC · daily totals across tracked repos"
+        : `Data through ${lastDate} (UTC) · daily totals across tracked repos`,
+    emptyText: "No traffic data stored yet",
+    sampleLabel,
+  });
+}
+
+export function viewsChart(series: SeriesPoint[], sampleLabel: boolean): string {
+  return readmeChart(series, METRICS[0], "Daily views · last 30 days", sampleLabel);
+}
+
+export function clonesChart(series: SeriesPoint[], sampleLabel: boolean): string {
+  return readmeChart(series, METRICS[1], "Daily clones · last 30 days", sampleLabel);
+}
+
+const REPO_FOOTER_EMPTY = "Dates in UTC";
+
+type Style = { label: string; color: string };
+
+function repoChart(
+  points: RepoSeriesPoint[],
+  title: string,
+  [main, unique]: [Style & { key: "views" | "clones" }, Style & { key: "uniqueViews" | "uniqueCloners" }],
+  sampleLabel: boolean,
+): string {
+  const lastDate = points[points.length - 1]?.date;
+  return renderChartSvg({
+    title,
+    dates: points.map((p) => p.date),
+    lines: [
+      { ...main, values: points.map((p) => p[main.key]) },
+      { ...unique, values: points.map((p) => p[unique.key]), dashed: true },
+    ],
+    footer: lastDate === undefined ? REPO_FOOTER_EMPTY : `Data through ${lastDate} (UTC)`,
+    emptyText: "No traffic data stored yet",
+    sampleLabel,
+  });
+}
+
+export function repoViewsChart(points: RepoSeriesPoint[], sampleLabel: boolean): string {
+  return repoChart(
+    points,
+    "Daily views · last 90 days",
+    [
+      { key: "views", label: "Views", color: "#0969da" },
+      { key: "uniqueViews", label: "Unique visitors", color: "#54aeff" },
+    ],
+    sampleLabel,
+  );
+}
+
+export function repoClonesChart(points: RepoSeriesPoint[], sampleLabel: boolean): string {
+  return repoChart(
+    points,
+    "Daily clones · last 90 days",
+    [
+      { key: "clones", label: "Clones", color: "#bc4c00" },
+      { key: "uniqueCloners", label: "Unique cloners", color: "#fb8f44" },
+    ],
+    sampleLabel,
+  );
+}
+
+export function repoStarsChart(stars: { date: string; total: number }[], sampleLabel: boolean): string {
+  const lastDate = stars[stars.length - 1]?.date;
+  return renderChartSvg({
+    title: "Stars · last 90 days",
+    dates: stars.map((s) => s.date),
+    lines: [{ key: "stars", label: "Stars", color: "#bf8700", values: stars.map((s) => s.total) }],
+    footer: lastDate === undefined ? REPO_FOOTER_EMPTY : `Data through ${lastDate} (UTC)`,
+    emptyText: "No star history stored",
+    sampleLabel,
+  });
 }

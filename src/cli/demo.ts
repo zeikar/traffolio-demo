@@ -1,10 +1,6 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildDashboardModel } from "../reporter/aggregate.js";
-import { renderSection } from "../reporter/readme.js";
-import { readTopReferrers } from "../reporter/referrers.js";
-import { renderSparklineSvg } from "../reporter/sparkline.js";
-import { renderTrafficSvg } from "../reporter/svg.js";
+import { renderOutputs } from "../reporter/outputs.js";
 import { createStore } from "../storage/store.js";
 import type { MonthFile } from "../types.js";
 
@@ -23,29 +19,20 @@ async function main(): Promise<void> {
   for (const id of Object.keys(index.repositories)) {
     monthFilesByRepo[id] = await demo.readMonthFiles(id);
   }
-  const model = buildDashboardModel(index, status, monthFilesByRepo);
-  const topReferrers = await readTopReferrers(demo, index, []);
+  const { section, files } = await renderOutputs({
+    store: demo,
+    index,
+    status,
+    monthFilesByRepo,
+    computed: { growth: [], referrers: [], releases: [] },
+    sampleLabel: true,
+  });
 
   const out = createStore(repoRoot);
-  const files: [string, string][] = [
-    ["docs/demo/traffic.svg", renderTrafficSvg(model.series, { sampleLabel: true })],
-    [
-      "docs/demo/README-section.md",
-      renderSection(model, {
-        svgPath: "./traffic.svg",
-        sparklinePath: (id) => `./sparklines/${id}.svg`,
-        sampleLabel: true,
-        topReferrers,
-      }),
-    ],
-    ...model.rows.map((row): [string, string] => [
-      `docs/demo/sparklines/${row.id}.svg`,
-      renderSparklineSvg(row.series),
-    ]),
-  ];
-  for (const [path, text] of files) {
-    const changed = await out.writeTextFile(path, text);
-    console.log(`${changed ? "wrote" : "unchanged"} ${path}`);
+  for (const [path, text] of [["README-section.md", section], ...files]) {
+    const target = `docs/demo/${path}`;
+    const changed = await out.writeTextFile(target, text);
+    console.log(`${changed ? "wrote" : "unchanged"} ${target}`);
   }
 }
 
