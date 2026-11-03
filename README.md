@@ -12,13 +12,14 @@ This repository is an ordinary instance of the Traffolio template, configured wi
 | Views | 19 | 19 | 19 |
 | Clones | 55 | 55 | 55 |
 
-| Repository | Trend (30d) | Visibility | Views 7d | Views 30d | Clones 7d | Clones 30d | Stars | Forks | Status |
+| Repository | Views trend (30d) | Visibility | Views 7d | Views 30d | Clones 7d | Clones 30d | Stars | Forks | Status |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| [zeikar/traffolio](https://github.com/zeikar/traffolio) | ![trend](assets/sparklines/1436712184.svg) | public | 19 | 19 | 55 | 55 | 1 | 0 | ok |
+| [zeikar/traffolio](repos/1436712184.md) · [GitHub](https://github.com/zeikar/traffolio) | ![trend](assets/sparklines/1436712184.svg) | public | 19 | 19 | 55 | 55 | 1 | 0 | ok |
 
-![Traffic over the last 30 days](assets/traffic.svg)
+![Views over the last 30 days](assets/views.svg)
+![Clones over the last 30 days](assets/clones.svg)
 
-#### Top referrers (last 14 days as of 2026-11-02, UTC)
+#### Top referrers (last 14 days as of 2026-11-03, UTC)
 
 | Referrer | Views from referrer |
 | --- | ---: |

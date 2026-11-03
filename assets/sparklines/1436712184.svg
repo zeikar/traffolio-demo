@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="28" viewBox="0 0 120 28" role="img" aria-label="30-day views and clones">
-<title>30-day views and clones</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="28" viewBox="0 0 120 28" role="img" aria-label="30-day views">
+<title>30-day views</title>
 <rect x="0.5" y="0.5" width="119" height="27" rx="4" fill="#ffffff" stroke="#d0d7de"/>
 <line x1="5.0" y1="23.0" x2="115.0" y2="23.0" stroke="#eaeef2" stroke-width="1"/>
-<path class="views" d="M58.1 23.0 L61.9 23.0 L65.7 23.0 L69.5 23.0 L73.3 23.0 L77.1 23.0 L80.9 23.0 L84.7 23.0 L88.4 23.0 L92.2 23.0 L96.0 23.0 L99.8 21.5 L103.6 23.0 L107.4 23.0 L111.2 23.0 L115.0 17.5" fill="none" stroke="#0969da" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="clones" d="M58.1 23.0 L61.9 23.0 L65.7 23.0 L69.5 23.0 L73.3 23.0 L77.1 23.0 L80.9 23.0 L84.7 23.0 L88.4 23.0 L92.2 23.0 L96.0 23.0 L99.8 20.8 L103.6 23.0 L107.4 23.0 L111.2 23.0 L115.0 5.0" fill="none" stroke="#bc4c00" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="views" d="M58.1 23.0 L61.9 23.0 L65.7 23.0 L69.5 23.0 L73.3 23.0 L77.1 23.0 L80.9 23.0 L84.7 23.0 L88.4 23.0 L92.2 23.0 L96.0 23.0 L99.8 18.2 L103.6 23.0 L107.4 23.0 L111.2 23.0 L115.0 5.0" fill="none" stroke="#0969da" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>
