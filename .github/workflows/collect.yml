@@ -25,7 +25,7 @@ name: Traffolio Collect
 on:
   schedule:
     # UTC, deliberately off the congested top of the hour.
-    - cron: '43 3 * * *'
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
