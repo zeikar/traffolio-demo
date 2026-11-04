@@ -101,6 +101,41 @@
           "uniques": 1
         }
       ]
+    },
+    "2026-11-04": {
+      "paths": [
+        {
+          "count": 18,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 1
+        },
+        {
+          "count": 3,
+          "path": "/zeikar/traffolio/blob/main/docs/demo/README-section.md",
+          "title": "/blob/main/docs/demo/README-section.md",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/blob/main/Traffolio_MVP.md",
+          "title": "/blob/main/Traffolio_MVP.md",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/commits/main",
+          "title": "/commits/main",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 16,
+          "referrer": "github.com",
+          "uniques": 1
+        }
+      ]
     }
   }
 }
