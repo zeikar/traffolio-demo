@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { beforeAll, describe, expect, it } from "vitest";
 import {
@@ -193,5 +194,11 @@ describe("markers", () => {
       MarkerError,
     );
     expect(() => replaceSection("x", section)).toThrow(MarkerError);
+  });
+
+  // The template's own README is what new repositories start from and what its scheduled run checks.
+  it("accepts the repository's own README", () => {
+    const readme = readFileSync(new URL("../../README.md", import.meta.url), "utf8");
+    expect(() => assertMarkers(readme)).not.toThrow();
   });
 });
