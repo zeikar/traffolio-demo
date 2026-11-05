@@ -23,6 +23,7 @@ git add -A -- data assets repos README.md && git commit -m "chore(data): update 
 
 ## Troubleshooting
 
+- **The run stopped with `readme_markers`.** The README must contain exactly one `<!-- TRAFFOLIO:START -->` and one `<!-- TRAFFOLIO:END -->`, with START first; the log names what is wrong (a missing marker, a duplicate, or the wrong order). Nothing was collected or written. Put the two marker lines back on their own lines where the dashboard should go (whatever is between them is replaced on the next run), commit, and re-run the workflow.
 - **The run failed because `TRAFFIC_TOKEN` is missing, or with a 401.** The secret is missing, expired, or revoked. Create a new token as in [Setup](../README.md#setup) step 4 and update the secret, then re-run.
 - **The run failed because the repository is public.** Make it private again. Anything committed while it was public is already exposed, so consider the history compromised and start from a fresh private repository if the data matters. Set `public_mode: true` only if you intend to publish the numbers (see [Public mode](public-mode.md)).
 - **A public-mode run failed with `public_private_data`.** The repository's `data/index.json` already holds data about a private repository, typically because it was a private Traffolio repository before. Create a clean new repository for public mode instead.
