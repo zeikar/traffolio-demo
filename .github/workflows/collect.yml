@@ -1,6 +1,6 @@
 # Traffolio daily collection.
 #
-# Exit codes of `node dist/cli/collect.js` (see README › Security):
+# Exit codes of `node dist/cli/collect.js` (see docs/security.md):
 #   0  ok, or template-repo skip (outcome=ok|skipped): nothing failed.
 #   1  fatal (outcome=fatal): nothing was written; no commit; job fails.
 #   2  partial (outcome=partial): some data was written and IS committed and
@@ -88,7 +88,7 @@ jobs:
           if git pull --rebase && git push; then
             exit 0
           fi
-          echo "::error::git push failed twice. Check branch protection rules (the default branch must allow github-actions[bot] to push) and concurrent pushes. See README > Troubleshooting."
+          echo "::error::git push failed twice. Check branch protection rules (the default branch must allow github-actions[bot] to push) and concurrent pushes. See docs/operations.md (Troubleshooting)."
           exit 1
 
       # Outside the repository, so nothing generated can be committed.
@@ -117,7 +117,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # Fails until Settings > Pages > Source is "GitHub Actions" (README > Public mode).
+      # Fails until Settings > Pages > Source is "GitHub Actions" (docs/public-mode.md).
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

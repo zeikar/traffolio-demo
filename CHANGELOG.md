@@ -8,7 +8,7 @@ To update an existing Traffolio repository, see [Updating Traffolio](README.md#u
 
 ### Public mode
 
-- `pages: true` publishes the dashboard to GitHub Pages on each run, from the data the run committed. It only takes effect in a public repository with `public_mode: true`; set the repository's Pages source to GitHub Actions first (see [GitHub Pages dashboard](README.md#github-pages-dashboard)).
+- `pages: true` publishes the dashboard to GitHub Pages on each run, from the data the run committed. It only takes effect in a public repository with `public_mode: true`; set the repository's Pages source to GitHub Actions first (see [GitHub Pages dashboard](docs/public-mode.md#github-pages-dashboard)).
 - `npm run dashboard -- --public` builds that page locally: no local path in the header, and it refuses data that lists a private repository.
 
 ### Output
@@ -16,6 +16,10 @@ To update an existing Traffolio repository, see [Updating Traffolio](README.md#u
 - Every repository in `data/index.json` gets a page, `repos/<repo_id>.md`, linked from the README table: totals, 90-day Views, Clones and Stars charts (`assets/repos/<repo_id>/`), and the latest referrers, pages and release downloads when stored. Repositories that are no longer tracked keep a page too.
 - The README chart is now two images, `assets/views.svg` and `assets/clones.svg`. The table sparkline shows views only, and the local dashboard shows a Views chart and a Clones chart (with unique lines when one repository is selected).
 - `assets/traffic.svg` is no longer updated: after updating, run `git rm assets/traffic.svg` and commit. If your README outside the markers links to it, point it at `assets/views.svg`.
+
+### Documentation
+
+- The README covers what Traffolio is, setup, configuration and updating. Reference material moved to `docs/`: [data](docs/data.md), [security and permissions](docs/security.md), [public mode](docs/public-mode.md) and [operations](docs/operations.md). These files arrive with each update, unlike your copy of the README.
 
 ## [0.1.0] - 2026-11-01
 

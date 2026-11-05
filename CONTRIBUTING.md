@@ -24,5 +24,5 @@ npm run check   # type check (src and test), tests, build, and a check that docs
 - Keep a pull request to one change, with tests for new behavior. A bug fix should come with a test that fails without it.
 - Run `npm run check` before pushing; CI runs the same.
 - Code, comments, docs and commit messages are in English. Commit subjects follow the existing style (`fix(reporter): ...`, `feat(dashboard): ...`, `docs: ...`).
-- Changes to what is collected, stored or published need extra care: data files are public in public mode, and a Traffolio repository's history can't be rewritten after the fact. Explain the effect on existing `data/` files, and update the README's Data section and the CHANGELOG.
+- Changes to what is collected, stored or published need extra care: data files are public in public mode, and a Traffolio repository's history can't be rewritten after the fact. Explain the effect on existing `data/` files, and update docs/data.md and the CHANGELOG.
 - No new runtime dependency without a reason; the collector runs with a write-scoped token.

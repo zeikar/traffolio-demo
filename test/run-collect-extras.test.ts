@@ -7,7 +7,7 @@ import { runCollect } from "../src/run-collect.js";
 import type { CollectResult } from "../src/run-collect.js";
 import type { GrowthFile, ReferrerMonthFile, ReleasesFile, StatusFile } from "../src/types.js";
 
-// Star/fork history, referrer snapshots and release downloads (README › Data, Security failure table).
+// Star/fork history, referrer snapshots and release downloads (docs/data.md, docs/security.md failure table).
 
 function fixtureText(name: string): string {
   return readFileSync(new URL(`../fixtures/api/${name}.json`, import.meta.url), "utf8");
