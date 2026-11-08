@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars · last 90 days, Data through 2026-11-06 (UTC)">
-<title>Traffolio: Stars · last 90 days, Data through 2026-11-06 (UTC)</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars · last 90 days, Data through 2026-11-07 (UTC)">
+<title>Traffolio: Stars · last 90 days, Data through 2026-11-07 (UTC)</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
 <rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
 <text x="24" y="32" class="title">Stars · last 90 days</text>
@@ -17,19 +17,19 @@
 <line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Aug 9</text>
+<text x="64" y="280" text-anchor="middle">Aug 10</text>
 <line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="176" y="280" text-anchor="middle">Aug 23</text>
+<text x="176" y="280" text-anchor="middle">Aug 24</text>
 <line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="288" y="280" text-anchor="middle">Sep 6</text>
+<text x="288" y="280" text-anchor="middle">Sep 7</text>
 <line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="400" y="280" text-anchor="middle">Sep 20</text>
+<text x="400" y="280" text-anchor="middle">Sep 21</text>
 <line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="512" y="280" text-anchor="middle">Oct 4</text>
+<text x="512" y="280" text-anchor="middle">Oct 5</text>
 <line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="624" y="280" text-anchor="middle">Oct 18</text>
+<text x="624" y="280" text-anchor="middle">Oct 19</text>
 <line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="736" y="280" text-anchor="middle">Nov 1</text>
-<path class="line stars" d="M64 262 L72 262 L80 262 L88 262 L96 262 L104 262 L112 262 L120 262 L128 262 L136 262 L144 262 L152 262 L160 262 L168 262 L176 262 L184 262 L192 262 L200 262 L208 262 L216 262 L224 262 L232 262 L240 262 L248 262 L256 262 L264 262 L272 262 L280 262 L288 262 L296 262 L304 262 L312 262 L320 262 L328 262 L336 262 L344 262 L352 262 L360 262 L368 262 L376 262 L384 262 L392 262 L400 262 L408 262 L416 262 L424 262 L432 262 L440 262 L448 262 L456 262 L464 262 L472 262 L480 262 L488 262 L496 262 L504 262 L512 262 L520 262 L528 262 L536 262 L544 262 L552 262 L560 262 L568 262 L576 262 L584 262 L592 262 L600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 262 L696 262 L704 262 L712 262 L720 262 L728 216 L736 216 L744 216 L752 216 L760 216 L768 216 L776 216" fill="none" stroke="#bf8700" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="24" y="304">Data through 2026-11-06 (UTC)</text>
+<text x="736" y="280" text-anchor="middle">Nov 2</text>
+<path class="line stars" d="M64 262 L72 262 L80 262 L88 262 L96 262 L104 262 L112 262 L120 262 L128 262 L136 262 L144 262 L152 262 L160 262 L168 262 L176 262 L184 262 L192 262 L200 262 L208 262 L216 262 L224 262 L232 262 L240 262 L248 262 L256 262 L264 262 L272 262 L280 262 L288 262 L296 262 L304 262 L312 262 L320 262 L328 262 L336 262 L344 262 L352 262 L360 262 L368 262 L376 262 L384 262 L392 262 L400 262 L408 262 L416 262 L424 262 L432 262 L440 262 L448 262 L456 262 L464 262 L472 262 L480 262 L488 262 L496 262 L504 262 L512 262 L520 262 L528 262 L536 262 L544 262 L552 262 L560 262 L568 262 L576 262 L584 262 L592 262 L600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 262 L696 262 L704 262 L712 262 L720 216 L728 216 L736 216 L744 216 L752 216 L760 216 L768 216 L776 216" fill="none" stroke="#bf8700" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="24" y="304">Data through 2026-11-07 (UTC)</text>
 </svg>
