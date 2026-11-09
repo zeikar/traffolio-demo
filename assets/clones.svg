@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 30 days, Data through 2026-11-07 (UTC) · daily totals across tracked repos">
-<title>Traffolio: Daily clones · last 30 days, Data through 2026-11-07 (UTC) · daily totals across tracked repos</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 30 days, Data through 2026-11-08 (UTC) · daily totals across tracked repos">
+<title>Traffolio: Daily clones · last 30 days, Data through 2026-11-08 (UTC) · daily totals across tracked repos</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
 <rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
 <text x="24" y="32" class="title">Daily clones · last 30 days</text>
@@ -17,15 +17,15 @@
 <line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Oct 9</text>
+<text x="64" y="280" text-anchor="middle">Oct 10</text>
 <line x1="236" y1="262" x2="236" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="236" y="280" text-anchor="middle">Oct 16</text>
+<text x="236" y="280" text-anchor="middle">Oct 17</text>
 <line x1="408" y1="262" x2="408" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="408" y="280" text-anchor="middle">Oct 23</text>
+<text x="408" y="280" text-anchor="middle">Oct 24</text>
 <line x1="580" y1="262" x2="580" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="580" y="280" text-anchor="middle">Oct 30</text>
+<text x="580" y="280" text-anchor="middle">Oct 31</text>
 <line x1="751" y1="262" x2="751" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="751" y="280" text-anchor="middle">Nov 6</text>
-<path class="line clones" d="M260 262 L285 262 L310 262 L334 262 L359 262 L383 262 L408 262 L432 262 L457 262 L481 262 L506 262 L530 243 L555 262 L580 262 L604 262 L629 110 L653 85 L678 144 L702 253 L727 172 L751 259 L776 256" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="24" y="304">Data through 2026-11-07 (UTC) · daily totals across tracked repos</text>
+<text x="751" y="280" text-anchor="middle">Nov 7</text>
+<path class="line clones" d="M236 262 L260 262 L285 262 L310 262 L334 262 L359 262 L383 262 L408 262 L432 262 L457 262 L481 262 L506 243 L530 262 L555 262 L580 262 L604 110 L629 85 L653 144 L678 253 L702 172 L727 259 L751 256 L776 259" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="24" y="304">Data through 2026-11-08 (UTC) · daily totals across tracked repos</text>
 </svg>

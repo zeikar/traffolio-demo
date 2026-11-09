@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 90 days, Data through 2026-11-07 (UTC)">
-<title>Traffolio: Daily clones · last 90 days, Data through 2026-11-07 (UTC)</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 90 days, Data through 2026-11-08 (UTC)">
+<title>Traffolio: Daily clones · last 90 days, Data through 2026-11-08 (UTC)</title>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
 <rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
 <text x="24" y="32" class="title">Daily clones · last 90 days</text>
@@ -17,20 +17,20 @@
 <line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
 <line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Aug 10</text>
+<text x="64" y="280" text-anchor="middle">Aug 11</text>
 <line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="176" y="280" text-anchor="middle">Aug 24</text>
+<text x="176" y="280" text-anchor="middle">Aug 25</text>
 <line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="288" y="280" text-anchor="middle">Sep 7</text>
+<text x="288" y="280" text-anchor="middle">Sep 8</text>
 <line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="400" y="280" text-anchor="middle">Sep 21</text>
+<text x="400" y="280" text-anchor="middle">Sep 22</text>
 <line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="512" y="280" text-anchor="middle">Oct 5</text>
+<text x="512" y="280" text-anchor="middle">Oct 6</text>
 <line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="624" y="280" text-anchor="middle">Oct 19</text>
+<text x="624" y="280" text-anchor="middle">Oct 20</text>
 <line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="736" y="280" text-anchor="middle">Nov 2</text>
-<path class="line clones" d="M608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 262 L696 243 L704 262 L712 262 L720 262 L728 110 L736 85 L744 144 L752 253 L760 172 L768 259 L776 256" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="line uniqueCloners" d="M608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 262 L696 259 L704 262 L712 262 L720 262 L728 194 L736 169 L744 212 L752 253 L760 234 L768 259 L776 256" fill="none" stroke="#fb8f44" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
-<text x="24" y="304">Data through 2026-11-07 (UTC)</text>
+<text x="736" y="280" text-anchor="middle">Nov 3</text>
+<path class="line clones" d="M600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 243 L696 262 L704 262 L712 262 L720 110 L728 85 L736 144 L744 253 L752 172 L760 259 L768 256 L776 259" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="line uniqueCloners" d="M600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 262 L664 262 L672 262 L680 262 L688 259 L696 262 L704 262 L712 262 L720 194 L728 169 L736 212 L744 253 L752 234 L760 259 L768 256 L776 259" fill="none" stroke="#fb8f44" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
+<text x="24" y="304">Data through 2026-11-08 (UTC)</text>
 </svg>
