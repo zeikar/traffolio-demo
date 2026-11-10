@@ -383,6 +383,59 @@
           "uniques": 1
         }
       ]
+    },
+    "2026-11-10": {
+      "paths": [
+        {
+          "count": 26,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 1
+        },
+        {
+          "count": 3,
+          "path": "/zeikar/traffolio/blob/main/docs/demo/README-section.md",
+          "title": "/blob/main/docs/demo/README-section.md",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions",
+          "title": "/actions",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions/runs/42014574720",
+          "title": "/actions/runs/42014574720",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions/runs/42014574720/job/127201755336",
+          "title": "/actions/runs/42014574720/job/127201755336",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/blob/main/Traffolio_MVP.md",
+          "title": "/blob/main/Traffolio_MVP.md",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/commits/main",
+          "title": "/commits/main",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 25,
+          "referrer": "github.com",
+          "uniques": 1
+        }
+      ]
     }
   }
 }
