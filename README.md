@@ -94,7 +94,7 @@ What every failure looks like, and the permissions in detail: [Security and perm
 
 ## Public mode
 
-`public_mode: true` lets a **public** Traffolio repository publish the traffic of selected public repositories on purpose, for example as a demo; with `pages: true` it also publishes the dashboard to GitHub Pages. Private repositories are never selected, and everything it produces, including Actions logs, is public. Read [Public mode](docs/public-mode.md) before turning it on.
+`public_mode: true` lets a **public** Traffolio repository publish the traffic of selected public repositories on purpose, for example as a demo; its charts can be [embedded in other READMEs](docs/public-mode.md#embed-a-chart-in-another-readme), and with `pages: true` it also publishes the dashboard to GitHub Pages. Private repositories are never selected, and everything it produces, including Actions logs, is public. Read [Public mode](docs/public-mode.md) before turning it on.
 
 ## Configuration
 
@@ -141,7 +141,7 @@ Before committing, `git status` shows what they delete: files Traffolio no longe
 
 - [Data](docs/data.md): the files in `data/`, and how present, missing and not-yet-tracked days are counted
 - [Security and permissions](docs/security.md): failure behavior, token permissions, the API calls made
-- [Public mode](docs/public-mode.md): publishing selected repositories, and the GitHub Pages dashboard
+- [Public mode](docs/public-mode.md): publishing selected repositories, embedding their charts, and the GitHub Pages dashboard
 - [Operations](docs/operations.md): schedule, token expiry, running a collection locally, troubleshooting
 - [GitHub API notes](docs/github-api-notes.md): API behavior measured while building Traffolio
 

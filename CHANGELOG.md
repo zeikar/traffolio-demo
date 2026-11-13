@@ -15,6 +15,7 @@ To update an existing Traffolio repository, see [Updating Traffolio](README.md#u
 
 - Every repository in `data/index.json` gets a page, `repos/<repo_id>.md`, linked from the README table: totals, 90-day Views, Clones and Stars charts (`assets/repos/<repo_id>/`), and the latest referrers, pages and release downloads when stored. Repositories that are no longer tracked keep a page too.
 - The README chart is now two images, `assets/views.svg` and `assets/clones.svg`. The table sparkline shows views only, and the local dashboard shows a Views chart and a Clones chart (with unique lines when one repository is selected).
+- The SVG charts follow the viewer's light or dark GitHub theme (in Safari, the system appearance), and the README and repository charts open with a headline number (the period's total, marked `*` when incomplete, or the latest star count) over a shaded line. Public-mode charts can be embedded in other READMEs (see [Embed a chart](docs/public-mode.md#embed-a-chart-in-another-readme)).
 - `assets/traffic.svg` is no longer updated: after updating, run `git rm assets/traffic.svg` and commit. If your README outside the markers links to it, point it at `assets/views.svg`.
 
 ### Documentation
