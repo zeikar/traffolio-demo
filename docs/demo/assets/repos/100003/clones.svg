@@ -1,40 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 90 days, Data through 2026-10-25 (UTC)">
-<title>Traffolio: Daily clones · last 90 days, Data through 2026-10-25 (UTC)</title>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
-<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="32" class="title">Daily clones · last 90 days</text>
-<rect x="660" y="14" width="116" height="26" rx="6" fill="#fff8c5" stroke="#d4a72c"/>
-<text x="718" y="32" class="banner" text-anchor="middle">SAMPLE DATA</text>
-<line x1="24" y1="56" x2="42" y2="56" stroke="#bc4c00" stroke-width="2.5" stroke-linecap="round"/>
-<text x="48" y="60">Clones</text>
-<line x1="100" y1="56" x2="118" y2="56" stroke="#fb8f44" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-<text x="124" y="60">Unique cloners</text>
-<text x="56" y="266" text-anchor="end">0</text>
-<line x1="64" y1="216" x2="776" y2="216" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="220" text-anchor="end">2</text>
-<line x1="64" y1="169" x2="776" y2="169" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="173" text-anchor="end">4</text>
-<line x1="64" y1="123" x2="776" y2="123" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="127" text-anchor="end">6</text>
-<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="80" text-anchor="end">8</text>
-<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Jul 28</text>
-<line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="176" y="280" text-anchor="middle">Aug 11</text>
-<line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="288" y="280" text-anchor="middle">Aug 25</text>
-<line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="400" y="280" text-anchor="middle">Sep 8</text>
-<line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="512" y="280" text-anchor="middle">Sep 22</text>
-<line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="624" y="280" text-anchor="middle">Oct 6</text>
-<line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="736" y="280" text-anchor="middle">Oct 20</text>
-<path class="line clones" d="M496 123 L504 99 L512 76 L520 192 L528 169 L536 146 L544 123 L552 99 L560 262 L568 192 L576 169 L584 146 L592 123 M632 99 L640 76 L648 192" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="line uniqueCloners" d="M496 192 L504 192 L512 169 L520 239 L528 216 L536 216 L544 192 L552 192 L560 262 L568 239 L576 216 L584 216 L592 192 M632 192 L640 169 L648 239" fill="none" stroke="#fb8f44" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
-<text x="24" y="304">Data through 2026-10-25 (UTC)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Clones · last 90 days: 82*. Data through 2026-10-25 (UTC)">
+<title>Traffolio: Clones · last 90 days: 82*. Data through 2026-10-25 (UTC)</title>
+<style>svg{--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;--grid:#eaeef2;--axis:#8c959f;--views:#0969da;--uniqueViews:#54aeff;--clones:#bc4c00;--uniqueCloners:#fb8f44;--stars:#bf8700;--warn:#7d4e00;--warn-bg:#fff8c5;--warn-border:#d4a72c}@media (prefers-color-scheme:dark){svg{--surface:#151b23;--border:#3d444d;--text:#f0f6fc;--muted:#9198a1;--grid:#262c36;--axis:#656c76;--views:#4493f8;--uniqueViews:#1f6feb;--clones:#f0883e;--uniqueCloners:#bd561d;--stars:#e3b341;--warn:#d29922;--warn-bg:rgba(187,128,9,.15);--warn-border:rgba(187,128,9,.45)}}.card{fill:var(--surface);stroke:var(--border)}.grid{stroke:var(--grid)}.axis{stroke:var(--axis)}.k-views{color:var(--views)}.k-uniqueViews{color:var(--uniqueViews)}.k-clones{color:var(--clones)}.k-uniqueCloners{color:var(--uniqueCloners)}.k-stars{color:var(--stars)}text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:var(--muted);font-size:11px}.title{font-size:13px}.headline{font-size:28px;font-weight:600;fill:var(--text)}.partial{fill:var(--surface)}.partial-key{fill:var(--surface);stroke:var(--muted)}.banner-box{fill:var(--warn-bg);stroke:var(--warn-border)}.banner{font-size:11px;font-weight:700;fill:var(--warn);letter-spacing:1px}.empty{font-size:14px}</style>
+<rect class="card" x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Clones · last 90 days</text>
+<text x="776" y="32" text-anchor="end">Data through 2026-10-25 (UTC)</text>
+<text x="24" y="70" class="headline">82*</text>
+<rect class="banner-box" x="660" y="46" width="116" height="24" rx="6"/>
+<text x="718" y="62" class="banner" text-anchor="middle">SAMPLE DATA</text>
+<text x="56" y="254" text-anchor="end">0</text>
+<line class="grid" x1="64" y1="213" x2="776" y2="213" stroke-width="1"/>
+<text x="56" y="217" text-anchor="end">2</text>
+<line class="grid" x1="64" y1="175" x2="776" y2="175" stroke-width="1"/>
+<text x="56" y="179" text-anchor="end">4</text>
+<line class="grid" x1="64" y1="138" x2="776" y2="138" stroke-width="1"/>
+<text x="56" y="142" text-anchor="end">6</text>
+<line class="grid" x1="64" y1="100" x2="776" y2="100" stroke-width="1"/>
+<text x="56" y="104" text-anchor="end">8</text>
+<line class="axis" x1="64" y1="100" x2="64" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="776" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="64" y2="254" stroke-width="1"/>
+<text x="64" y="268" text-anchor="middle">Jul 28</text>
+<line class="axis" x1="176" y1="250" x2="176" y2="254" stroke-width="1"/>
+<text x="176" y="268" text-anchor="middle">Aug 11</text>
+<line class="axis" x1="288" y1="250" x2="288" y2="254" stroke-width="1"/>
+<text x="288" y="268" text-anchor="middle">Aug 25</text>
+<line class="axis" x1="400" y1="250" x2="400" y2="254" stroke-width="1"/>
+<text x="400" y="268" text-anchor="middle">Sep 8</text>
+<line class="axis" x1="512" y1="250" x2="512" y2="254" stroke-width="1"/>
+<text x="512" y="268" text-anchor="middle">Sep 22</text>
+<line class="axis" x1="624" y1="250" x2="624" y2="254" stroke-width="1"/>
+<text x="624" y="268" text-anchor="middle">Oct 6</text>
+<line class="axis" x1="736" y1="250" x2="736" y2="254" stroke-width="1"/>
+<text x="736" y="268" text-anchor="middle">Oct 20</text>
+<g class="k-clones">
+<linearGradient id="fill-clones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0.22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path class="area" d="M496 250 L496 138 L504 119 L512 100 L520 194 L528 175 L536 156 L544 138 L552 119 L560 250 L568 194 L576 175 L584 156 L592 138 L592 250 Z M632 250 L632 119 L640 100 L648 194 L648 250 Z" fill="url(#fill-clones)"/>
+<path class="line clones" d="M496 138 L504 119 L512 100 L520 194 L528 175 L536 156 L544 138 L552 119 L560 250 L568 194 L576 175 L584 156 L592 138 M632 119 L640 100 L648 194" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g class="k-uniqueCloners">
+<path class="line uniqueCloners" d="M496 194 L504 194 L512 175 L520 231 L528 213 L536 213 L544 194 L552 194 L560 250 L568 231 L576 213 L584 213 L592 194 M632 194 L640 175 L648 231" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
+</g>
+<line class="k-clones" x1="24" y1="296" x2="42" y2="296" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+<text x="48" y="300">Clones</text>
+<line class="k-uniqueCloners" x1="100" y1="296" x2="118" y2="296" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+<text x="124" y="300">Unique cloners</text>
+<text x="224" y="300">* total has missing or partial days</text>
+<text x="776" y="300" text-anchor="end">Daily counts</text>
 </svg>

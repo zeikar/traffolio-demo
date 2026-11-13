@@ -34,13 +34,15 @@ describe("renderSparklineSvg", () => {
     );
     expect(svg).toContain("<title>30-day views</title>");
     expect(svg).not.toMatch(/<script|href=|on\w+=/i);
-    // Light card so the lines stay legible on GitHub's dark theme.
-    expect(svg).toMatch(/<rect [^>]*fill="#ffffff"/);
+    // Themed card: light by default, dark under prefers-color-scheme.
+    expect(svg).toMatch(/<rect class="card"/);
+    expect(svg).toContain("@media (prefers-color-scheme:dark)");
+    expect(svg.replace(/<rect class="card"[^>]*>/, "")).not.toMatch(/(?:fill|stroke)="#/);
   });
 
   it("scales views on their own, ignoring clones", () => {
     const svg = renderSparklineSvg([point(day(0), 10, 500), point(day(1), 0, 1000)]);
-    expect(svg).toMatch(/<path class="views" [^>]*stroke="#0969da"/);
+    expect(svg).toMatch(/<g class="k-views">\n<path class="views" [^>]*stroke="currentColor"/);
     expect(svg).not.toContain('class="clones"');
     // Peak views reach the top of the plot and zero sits on the baseline.
     expect(ys(pathData(svg, "views")!)).toEqual([5, 23]);
@@ -78,7 +80,7 @@ describe("renderSparklineSvg", () => {
       expect(svg).toMatch(/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
       expect(svg).toContain("no data");
       expect(svg).not.toContain("<path");
-      expect(svg).toMatch(/<rect [^>]*fill="#ffffff"/);
+      expect(svg).toMatch(/<rect class="card"/);
       expect(svg).not.toMatch(/<script/i);
     }
   });

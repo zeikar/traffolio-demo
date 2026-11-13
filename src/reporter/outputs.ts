@@ -1,7 +1,7 @@
 import type { ExtrasFiles } from "../collect-extras.js";
 import type { Store } from "../storage/store.js";
 import type { IndexFile, MonthFile, StatusFile } from "../types.js";
-import { buildDashboardModel, daysFromMonthFiles } from "./aggregate.js";
+import { buildDashboardModel, daysFromMonthFiles, isIncomplete } from "./aggregate.js";
 import { renderSection } from "./readme.js";
 import { buildRepoPageModel, loadRepoExtras } from "./repo-model.js";
 import { renderRepoPage } from "./repo-page.js";
@@ -49,9 +49,11 @@ export async function renderOutputs(input: OutputsInput): Promise<Outputs> {
     sampleLabel,
     topReferrers,
   });
+  // The README charts span the same 30 days as the table's 30d column.
+  const readmeIncomplete = model.totals !== null && isIncomplete(model.totals.d30);
   const files: [string, string][] = [
-    [viewsSvgPath, viewsChart(model.series, sampleLabel)],
-    [clonesSvgPath, clonesChart(model.series, sampleLabel)],
+    [viewsSvgPath, viewsChart(model.series, readmeIncomplete, sampleLabel)],
+    [clonesSvgPath, clonesChart(model.series, readmeIncomplete, sampleLabel)],
     ...model.rows.map((row): [string, string] => [sparklinePath(row.id), renderSparklineSvg(row.series)]),
   ];
   for (const row of model.rows) {
@@ -67,8 +69,8 @@ export async function renderOutputs(input: OutputsInput): Promise<Outputs> {
         repoPagePath(row.id),
         renderRepoPage(page, { imagePath: (name) => `../${repoImagePath(row.id, name)}`, sampleLabel }),
       ],
-      [repoImagePath(row.id, "views"), repoViewsChart(page.series, sampleLabel)],
-      [repoImagePath(row.id, "clones"), repoClonesChart(page.series, sampleLabel)],
+      [repoImagePath(row.id, "views"), repoViewsChart(page.series, isIncomplete(page.totals.d90), sampleLabel)],
+      [repoImagePath(row.id, "clones"), repoClonesChart(page.series, isIncomplete(page.totals.d90), sampleLabel)],
     );
     if (page.growth) files.push([repoImagePath(row.id, "stars"), repoStarsChart(page.growth.stars, sampleLabel)]);
   }

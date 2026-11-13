@@ -1,37 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars · last 90 days, Data through 2026-10-25 (UTC)">
-<title>Traffolio: Stars · last 90 days, Data through 2026-10-25 (UTC)</title>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
-<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="32" class="title">Stars · last 90 days</text>
-<rect x="660" y="14" width="116" height="26" rx="6" fill="#fff8c5" stroke="#d4a72c"/>
-<text x="718" y="32" class="banner" text-anchor="middle">SAMPLE DATA</text>
-<line x1="24" y1="56" x2="42" y2="56" stroke="#bf8700" stroke-width="2.5" stroke-linecap="round"/>
-<text x="48" y="60">Stars</text>
-<text x="56" y="266" text-anchor="end">0</text>
-<line x1="64" y1="216" x2="776" y2="216" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="220" text-anchor="end">5</text>
-<line x1="64" y1="169" x2="776" y2="169" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="173" text-anchor="end">10</text>
-<line x1="64" y1="123" x2="776" y2="123" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="127" text-anchor="end">15</text>
-<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="80" text-anchor="end">20</text>
-<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Jul 28</text>
-<line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="176" y="280" text-anchor="middle">Aug 11</text>
-<line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="288" y="280" text-anchor="middle">Aug 25</text>
-<line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="400" y="280" text-anchor="middle">Sep 8</text>
-<line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="512" y="280" text-anchor="middle">Sep 22</text>
-<line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="624" y="280" text-anchor="middle">Oct 6</text>
-<line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="736" y="280" text-anchor="middle">Oct 20</text>
-<path class="line stars" d="M64 123 L72 123 L80 123 L88 123 L96 123 L104 123 L112 123 L120 123 L128 123 L136 123 L144 123 L152 123 L160 123 L168 123 L176 113 L184 113 L192 113 L200 113 L208 113 L216 113 L224 113 L232 113 L240 113 L248 113 L256 113 L264 113 L272 113 L280 113 L288 113 L296 113 L304 113 L312 113 L320 113 L328 113 L336 113 L344 113 L352 113 L360 113 L368 113 L376 113 L384 113 L392 113 L400 113 L408 113 L416 113 L424 113 L432 113 L440 113 L448 104 L456 104 L464 104 L472 104 L480 104 L488 104 L496 104 L504 104 L512 104 L520 104 L528 104 L536 104 L544 104 L552 104 L560 104 L568 104 L576 104 L584 104 L592 104 L600 104 L608 104 L616 104 L624 104 L632 104 L640 104 L648 104 L656 104 L664 104 L672 104 L680 104 L688 104 L696 104 L704 104 L712 104 L720 104 L728 104 L736 104 L744 104 L752 104 L760 104 L768 104 L776 104" fill="none" stroke="#bf8700" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="24" y="304">Data through 2026-10-25 (UTC)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars: 17. Data through 2026-10-25 (UTC)">
+<title>Traffolio: Stars: 17. Data through 2026-10-25 (UTC)</title>
+<style>svg{--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;--grid:#eaeef2;--axis:#8c959f;--views:#0969da;--uniqueViews:#54aeff;--clones:#bc4c00;--uniqueCloners:#fb8f44;--stars:#bf8700;--warn:#7d4e00;--warn-bg:#fff8c5;--warn-border:#d4a72c}@media (prefers-color-scheme:dark){svg{--surface:#151b23;--border:#3d444d;--text:#f0f6fc;--muted:#9198a1;--grid:#262c36;--axis:#656c76;--views:#4493f8;--uniqueViews:#1f6feb;--clones:#f0883e;--uniqueCloners:#bd561d;--stars:#e3b341;--warn:#d29922;--warn-bg:rgba(187,128,9,.15);--warn-border:rgba(187,128,9,.45)}}.card{fill:var(--surface);stroke:var(--border)}.grid{stroke:var(--grid)}.axis{stroke:var(--axis)}.k-views{color:var(--views)}.k-uniqueViews{color:var(--uniqueViews)}.k-clones{color:var(--clones)}.k-uniqueCloners{color:var(--uniqueCloners)}.k-stars{color:var(--stars)}text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:var(--muted);font-size:11px}.title{font-size:13px}.headline{font-size:28px;font-weight:600;fill:var(--text)}.partial{fill:var(--surface)}.partial-key{fill:var(--surface);stroke:var(--muted)}.banner-box{fill:var(--warn-bg);stroke:var(--warn-border)}.banner{font-size:11px;font-weight:700;fill:var(--warn);letter-spacing:1px}.empty{font-size:14px}</style>
+<rect class="card" x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Stars</text>
+<text x="776" y="32" text-anchor="end">Data through 2026-10-25 (UTC)</text>
+<text x="24" y="70" class="headline">17</text>
+<rect class="banner-box" x="660" y="46" width="116" height="24" rx="6"/>
+<text x="718" y="62" class="banner" text-anchor="middle">SAMPLE DATA</text>
+<text x="56" y="254" text-anchor="end">0</text>
+<line class="grid" x1="64" y1="213" x2="776" y2="213" stroke-width="1"/>
+<text x="56" y="217" text-anchor="end">5</text>
+<line class="grid" x1="64" y1="175" x2="776" y2="175" stroke-width="1"/>
+<text x="56" y="179" text-anchor="end">10</text>
+<line class="grid" x1="64" y1="138" x2="776" y2="138" stroke-width="1"/>
+<text x="56" y="142" text-anchor="end">15</text>
+<line class="grid" x1="64" y1="100" x2="776" y2="100" stroke-width="1"/>
+<text x="56" y="104" text-anchor="end">20</text>
+<line class="axis" x1="64" y1="100" x2="64" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="776" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="64" y2="254" stroke-width="1"/>
+<text x="64" y="268" text-anchor="middle">Jul 28</text>
+<line class="axis" x1="176" y1="250" x2="176" y2="254" stroke-width="1"/>
+<text x="176" y="268" text-anchor="middle">Aug 11</text>
+<line class="axis" x1="288" y1="250" x2="288" y2="254" stroke-width="1"/>
+<text x="288" y="268" text-anchor="middle">Aug 25</text>
+<line class="axis" x1="400" y1="250" x2="400" y2="254" stroke-width="1"/>
+<text x="400" y="268" text-anchor="middle">Sep 8</text>
+<line class="axis" x1="512" y1="250" x2="512" y2="254" stroke-width="1"/>
+<text x="512" y="268" text-anchor="middle">Sep 22</text>
+<line class="axis" x1="624" y1="250" x2="624" y2="254" stroke-width="1"/>
+<text x="624" y="268" text-anchor="middle">Oct 6</text>
+<line class="axis" x1="736" y1="250" x2="736" y2="254" stroke-width="1"/>
+<text x="736" y="268" text-anchor="middle">Oct 20</text>
+<g class="k-stars">
+<linearGradient id="fill-stars" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0.22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path class="area" d="M64 250 L64 138 L72 138 L80 138 L88 138 L96 138 L104 138 L112 138 L120 138 L128 138 L136 138 L144 138 L152 138 L160 138 L168 138 L176 130 L184 130 L192 130 L200 130 L208 130 L216 130 L224 130 L232 130 L240 130 L248 130 L256 130 L264 130 L272 130 L280 130 L288 130 L296 130 L304 130 L312 130 L320 130 L328 130 L336 130 L344 130 L352 130 L360 130 L368 130 L376 130 L384 130 L392 130 L400 130 L408 130 L416 130 L424 130 L432 130 L440 130 L448 123 L456 123 L464 123 L472 123 L480 123 L488 123 L496 123 L504 123 L512 123 L520 123 L528 123 L536 123 L544 123 L552 123 L560 123 L568 123 L576 123 L584 123 L592 123 L600 123 L608 123 L616 123 L624 123 L632 123 L640 123 L648 123 L656 123 L664 123 L672 123 L680 123 L688 123 L696 123 L704 123 L712 123 L720 123 L728 123 L736 123 L744 123 L752 123 L760 123 L768 123 L776 123 L776 250 Z" fill="url(#fill-stars)"/>
+<path class="line stars" d="M64 138 L72 138 L80 138 L88 138 L96 138 L104 138 L112 138 L120 138 L128 138 L136 138 L144 138 L152 138 L160 138 L168 138 L176 130 L184 130 L192 130 L200 130 L208 130 L216 130 L224 130 L232 130 L240 130 L248 130 L256 130 L264 130 L272 130 L280 130 L288 130 L296 130 L304 130 L312 130 L320 130 L328 130 L336 130 L344 130 L352 130 L360 130 L368 130 L376 130 L384 130 L392 130 L400 130 L408 130 L416 130 L424 130 L432 130 L440 130 L448 123 L456 123 L464 123 L472 123 L480 123 L488 123 L496 123 L504 123 L512 123 L520 123 L528 123 L536 123 L544 123 L552 123 L560 123 L568 123 L576 123 L584 123 L592 123 L600 123 L608 123 L616 123 L624 123 L632 123 L640 123 L648 123 L656 123 L664 123 L672 123 L680 123 L688 123 L696 123 L704 123 L712 123 L720 123 L728 123 L736 123 L744 123 L752 123 L760 123 L768 123 L776 123" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<text x="776" y="300" text-anchor="end">Last 90 days</text>
 </svg>

@@ -11,6 +11,19 @@
 - **Use a separate fine-grained token** for the public repository's `TRAFFIC_TOKEN`, limited to the repositories you publish (Repository access: **Only select repositories**), so it cannot read traffic of anything else.
 - In a private repository `public_mode` has no effect; the run logs a notice and collects as usual.
 
+## Embed a chart in another README
+
+A public-mode repository's charts are public files, so any README can show them, for example the project's own. Each run updates them, and each chart follows the viewer's light or dark GitHub theme (in Safari, the system appearance).
+
+```markdown
+![Views of my-project](https://raw.githubusercontent.com/<user>/<traffolio-repository>/main/assets/repos/<repo_id>/views.svg)
+```
+
+- `assets/views.svg` and `assets/clones.svg`: daily totals across the selected repositories over the last 30 days, headlined by the 30-day total (marked `*` when some days are missing or partial).
+- `assets/repos/<repo_id>/views.svg`, `clones.svg`: one repository's last 90 days, and `stars.svg` once its star history has been stored. `<repo_id>` is the repository's numeric ID, the name of its page in `repos/` (linked from the README table), or `gh api repos/<user>/<name> --jq .id`.
+
+Replace `main` if your default branch has another name. Charts in a private Traffolio repository can't be embedded elsewhere: their URLs need access to the repository.
+
 ## GitHub Pages dashboard
 
 With `pages: true` as well, each run also publishes the [local dashboard](../README.md#local-dashboard) to GitHub Pages, at `https://<user>.github.io/<repository>/`. The page is built from the `data/` the run has just committed, so it shows nothing the repository doesn't already publish, and it names no local path.
