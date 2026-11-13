@@ -1,4 +1,4 @@
-import type { DashboardModel, DashboardRow, PeriodSum } from "./aggregate.js";
+import { isIncomplete, type DashboardModel, type DashboardRow, type PeriodSum } from "./aggregate.js";
 import type { TopReferrers } from "./referrers.js";
 
 export const MARKER_START = "<!-- TRAFFOLIO:START -->";
@@ -50,7 +50,7 @@ export function replaceSection(readme: string, section: string): string {
 /** `—` = no stored days at all (not zero); `*` = some days have no data, or lack some repositories. */
 export function formatCell(value: number | null, p: PeriodSum): string {
   if (value === null) return DASH;
-  return p.missingDays > 0 || p.partialDays > 0 ? `${value}*` : String(value);
+  return isIncomplete(p) ? `${value}*` : String(value);
 }
 
 const views = (p: PeriodSum): string => formatCell(p.views, p);
@@ -119,7 +119,7 @@ export function renderSection(model: DashboardModel, opts: RenderOptions): strin
   let needsFootnote = false;
   if (totals) {
     const periods = [totals.d7, totals.d30, totals.all];
-    needsFootnote = periods.some((p) => (p.missingDays > 0 || p.partialDays > 0) && p.presentDays > 0);
+    needsFootnote = periods.some((p) => isIncomplete(p) && p.presentDays > 0);
     out.push(
       "| | 7d | 30d | All |",
       "| --- | ---: | ---: | ---: |",
@@ -133,7 +133,7 @@ export function renderSection(model: DashboardModel, opts: RenderOptions): strin
   if (rows.length > 0) {
     out.push(...repoTable(rows, opts.sparklinePath, opts.repoPagePath), "");
     needsFootnote ||= rows.some((r) =>
-      [r.d7, r.d30].some((p) => (p.missingDays > 0 || p.partialDays > 0) && p.presentDays > 0),
+      [r.d7, r.d30].some((p) => isIncomplete(p) && p.presentDays > 0),
     );
   }
 

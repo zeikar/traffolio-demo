@@ -24,6 +24,9 @@ export interface PeriodSum {
   partialDays: number;
 }
 
+/** Some days of the period have no data, or lack some repositories: the total is marked `*`. */
+export const isIncomplete = (p: PeriodSum): boolean => p.missingDays > 0 || p.partialDays > 0;
+
 export interface PeriodTotals {
   d7: PeriodSum;
   d30: PeriodSum;
