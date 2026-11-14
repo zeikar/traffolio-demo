@@ -1,31 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily clones · last 30 days, Data through 2026-11-12 (UTC) · daily totals across tracked repos">
-<title>Traffolio: Daily clones · last 30 days, Data through 2026-11-12 (UTC) · daily totals across tracked repos</title>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
-<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="32" class="title">Daily clones · last 30 days</text>
-<line x1="24" y1="56" x2="42" y2="56" stroke="#bc4c00" stroke-width="2.5" stroke-linecap="round"/>
-<text x="48" y="60">Clones</text>
-<circle cx="105" cy="56" r="3.5" fill="#ffffff" stroke="#57606a" stroke-width="1.5"/>
-<text x="114" y="60">partial day — one or more tracked repos have no data for that date</text>
-<text x="56" y="266" text-anchor="end">0</text>
-<line x1="64" y1="200" x2="776" y2="200" stroke="#eaeef2" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Clones · last 30 days: 203. Data through 2026-11-13 (UTC)">
+<title>Traffolio: Clones · last 30 days: 203. Data through 2026-11-13 (UTC)</title>
+<style>svg{--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;--grid:#eaeef2;--axis:#8c959f;--views:#0969da;--uniqueViews:#54aeff;--clones:#bc4c00;--uniqueCloners:#fb8f44;--stars:#bf8700;--warn:#7d4e00;--warn-bg:#fff8c5;--warn-border:#d4a72c}@media (prefers-color-scheme:dark){svg{--surface:#151b23;--border:#3d444d;--text:#f0f6fc;--muted:#9198a1;--grid:#262c36;--axis:#656c76;--views:#4493f8;--uniqueViews:#1f6feb;--clones:#f0883e;--uniqueCloners:#bd561d;--stars:#e3b341;--warn:#d29922;--warn-bg:rgba(187,128,9,.15);--warn-border:rgba(187,128,9,.45)}}.card{fill:var(--surface);stroke:var(--border)}.grid{stroke:var(--grid)}.axis{stroke:var(--axis)}.k-views{color:var(--views)}.k-uniqueViews{color:var(--uniqueViews)}.k-clones{color:var(--clones)}.k-uniqueCloners{color:var(--uniqueCloners)}.k-stars{color:var(--stars)}text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:var(--muted);font-size:11px}.title{font-size:13px}.headline{font-size:28px;font-weight:600;fill:var(--text)}.partial{fill:var(--surface)}.partial-key{fill:var(--surface);stroke:var(--muted)}.banner-box{fill:var(--warn-bg);stroke:var(--warn-border)}.banner{font-size:11px;font-weight:700;fill:var(--warn);letter-spacing:1px}.empty{font-size:14px}</style>
+<rect class="card" x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Clones · last 30 days</text>
+<text x="776" y="32" text-anchor="end">Data through 2026-11-13 (UTC)</text>
+<text x="24" y="70" class="headline">203</text>
+<text x="56" y="254" text-anchor="end">0</text>
+<line class="grid" x1="64" y1="200" x2="776" y2="200" stroke-width="1"/>
 <text x="56" y="204" text-anchor="end">20</text>
-<line x1="64" y1="138" x2="776" y2="138" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="142" text-anchor="end">40</text>
-<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="80" text-anchor="end">60</text>
-<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Oct 14</text>
-<line x1="236" y1="262" x2="236" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="236" y="280" text-anchor="middle">Oct 21</text>
-<line x1="408" y1="262" x2="408" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="408" y="280" text-anchor="middle">Oct 28</text>
-<line x1="580" y1="262" x2="580" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="580" y="280" text-anchor="middle">Nov 4</text>
-<line x1="751" y1="262" x2="751" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="751" y="280" text-anchor="middle">Nov 11</text>
-<path class="line clones" d="M138 262 L162 262 L187 262 L211 262 L236 262 L260 262 L285 262 L310 262 L334 262 L359 262 L383 262 L408 243 L432 262 L457 262 L481 262 L506 110 L530 85 L555 144 L580 253 L604 172 L629 259 L653 256 L678 259 L702 259 L727 256 L751 250 L776 256" fill="none" stroke="#bc4c00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="24" y="304">Data through 2026-11-12 (UTC) · daily totals across tracked repos</text>
+<line class="grid" x1="64" y1="150" x2="776" y2="150" stroke-width="1"/>
+<text x="56" y="154" text-anchor="end">40</text>
+<line class="grid" x1="64" y1="100" x2="776" y2="100" stroke-width="1"/>
+<text x="56" y="104" text-anchor="end">60</text>
+<line class="axis" x1="64" y1="100" x2="64" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="776" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="64" y2="254" stroke-width="1"/>
+<text x="64" y="268" text-anchor="middle">Oct 15</text>
+<line class="axis" x1="236" y1="250" x2="236" y2="254" stroke-width="1"/>
+<text x="236" y="268" text-anchor="middle">Oct 22</text>
+<line class="axis" x1="408" y1="250" x2="408" y2="254" stroke-width="1"/>
+<text x="408" y="268" text-anchor="middle">Oct 29</text>
+<line class="axis" x1="580" y1="250" x2="580" y2="254" stroke-width="1"/>
+<text x="580" y="268" text-anchor="middle">Nov 5</text>
+<line class="axis" x1="751" y1="250" x2="751" y2="254" stroke-width="1"/>
+<text x="751" y="268" text-anchor="middle">Nov 12</text>
+<g class="k-clones">
+<linearGradient id="fill-clones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0.22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path class="area" d="M113 250 L113 250 L138 250 L162 250 L187 250 L211 250 L236 250 L260 250 L285 250 L310 250 L334 250 L359 250 L383 235 L408 250 L432 250 L457 250 L481 128 L506 108 L530 155 L555 243 L580 178 L604 248 L629 245 L653 248 L678 248 L702 245 L727 240 L751 245 L776 230 L776 250 Z" fill="url(#fill-clones)"/>
+<path class="line clones" d="M113 250 L138 250 L162 250 L187 250 L211 250 L236 250 L260 250 L285 250 L310 250 L334 250 L359 250 L383 235 L408 250 L432 250 L457 250 L481 128 L506 108 L530 155 L555 243 L580 178 L604 248 L629 245 L653 248 L678 248 L702 245 L727 240 L751 245 L776 230" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<text x="776" y="300" text-anchor="end">Daily totals across tracked repos</text>
 </svg>

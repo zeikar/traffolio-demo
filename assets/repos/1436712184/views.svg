@@ -1,36 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Daily views · last 90 days, Data through 2026-11-12 (UTC)">
-<title>Traffolio: Daily views · last 90 days, Data through 2026-11-12 (UTC)</title>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#57606a;font-size:11px}.title{font-size:14px;font-weight:600;fill:#1f2328}.banner{font-size:12px;font-weight:700;fill:#7d4e00;letter-spacing:1px}.empty{font-size:14px;fill:#57606a}</style>
-<rect x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="32" class="title">Daily views · last 90 days</text>
-<line x1="24" y1="56" x2="42" y2="56" stroke="#0969da" stroke-width="2.5" stroke-linecap="round"/>
-<text x="48" y="60">Views</text>
-<line x1="94" y1="56" x2="112" y2="56" stroke="#54aeff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-<text x="118" y="60">Unique visitors</text>
-<text x="56" y="266" text-anchor="end">0</text>
-<line x1="64" y1="200" x2="776" y2="200" stroke="#eaeef2" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Views · last 90 days: 40. Data through 2026-11-13 (UTC)">
+<title>Traffolio: Views · last 90 days: 40. Data through 2026-11-13 (UTC)</title>
+<style>svg{--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;--grid:#eaeef2;--axis:#8c959f;--views:#0969da;--uniqueViews:#54aeff;--clones:#bc4c00;--uniqueCloners:#fb8f44;--stars:#bf8700;--warn:#7d4e00;--warn-bg:#fff8c5;--warn-border:#d4a72c}@media (prefers-color-scheme:dark){svg{--surface:#151b23;--border:#3d444d;--text:#f0f6fc;--muted:#9198a1;--grid:#262c36;--axis:#656c76;--views:#4493f8;--uniqueViews:#1f6feb;--clones:#f0883e;--uniqueCloners:#bd561d;--stars:#e3b341;--warn:#d29922;--warn-bg:rgba(187,128,9,.15);--warn-border:rgba(187,128,9,.45)}}.card{fill:var(--surface);stroke:var(--border)}.grid{stroke:var(--grid)}.axis{stroke:var(--axis)}.k-views{color:var(--views)}.k-uniqueViews{color:var(--uniqueViews)}.k-clones{color:var(--clones)}.k-uniqueCloners{color:var(--uniqueCloners)}.k-stars{color:var(--stars)}text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:var(--muted);font-size:11px}.title{font-size:13px}.headline{font-size:28px;font-weight:600;fill:var(--text)}.partial{fill:var(--surface)}.partial-key{fill:var(--surface);stroke:var(--muted)}.banner-box{fill:var(--warn-bg);stroke:var(--warn-border)}.banner{font-size:11px;font-weight:700;fill:var(--warn);letter-spacing:1px}.empty{font-size:14px}</style>
+<rect class="card" x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Views · last 90 days</text>
+<text x="776" y="32" text-anchor="end">Data through 2026-11-13 (UTC)</text>
+<text x="24" y="70" class="headline">40</text>
+<text x="56" y="254" text-anchor="end">0</text>
+<line class="grid" x1="64" y1="200" x2="776" y2="200" stroke-width="1"/>
 <text x="56" y="204" text-anchor="end">5</text>
-<line x1="64" y1="138" x2="776" y2="138" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="142" text-anchor="end">10</text>
-<line x1="64" y1="76" x2="776" y2="76" stroke="#eaeef2" stroke-width="1"/>
-<text x="56" y="80" text-anchor="end">15</text>
-<line x1="64" y1="76" x2="64" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="776" y2="262" stroke="#8c959f" stroke-width="1"/>
-<line x1="64" y1="262" x2="64" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="64" y="280" text-anchor="middle">Aug 15</text>
-<line x1="176" y1="262" x2="176" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="176" y="280" text-anchor="middle">Aug 29</text>
-<line x1="288" y1="262" x2="288" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="288" y="280" text-anchor="middle">Sep 12</text>
-<line x1="400" y1="262" x2="400" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="400" y="280" text-anchor="middle">Sep 26</text>
-<line x1="512" y1="262" x2="512" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="512" y="280" text-anchor="middle">Oct 10</text>
-<line x1="624" y1="262" x2="624" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="624" y="280" text-anchor="middle">Oct 24</text>
-<line x1="736" y1="262" x2="736" y2="266" stroke="#8c959f" stroke-width="1"/>
-<text x="736" y="280" text-anchor="middle">Nov 7</text>
-<path class="line views" d="M568 262 L576 262 L584 262 L592 262 L600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 212 L664 262 L672 262 L680 262 L688 76 L696 250 L704 212 L712 225 L720 150 L728 262 L736 262 L744 262 L752 262 L760 262 L768 225 L776 262" fill="none" stroke="#0969da" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<path class="line uniqueViews" d="M568 262 L576 262 L584 262 L592 262 L600 262 L608 262 L616 262 L624 262 L632 262 L640 262 L648 262 L656 250 L664 262 L672 262 L680 262 L688 250 L696 250 L704 250 L712 250 L720 250 L728 262 L736 262 L744 262 L752 262 L760 262 L768 237 L776 262" fill="none" stroke="#54aeff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
-<text x="24" y="304">Data through 2026-11-12 (UTC)</text>
+<line class="grid" x1="64" y1="150" x2="776" y2="150" stroke-width="1"/>
+<text x="56" y="154" text-anchor="end">10</text>
+<line class="grid" x1="64" y1="100" x2="776" y2="100" stroke-width="1"/>
+<text x="56" y="104" text-anchor="end">15</text>
+<line class="axis" x1="64" y1="100" x2="64" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="776" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="64" y2="254" stroke-width="1"/>
+<text x="64" y="268" text-anchor="middle">Aug 16</text>
+<line class="axis" x1="176" y1="250" x2="176" y2="254" stroke-width="1"/>
+<text x="176" y="268" text-anchor="middle">Aug 30</text>
+<line class="axis" x1="288" y1="250" x2="288" y2="254" stroke-width="1"/>
+<text x="288" y="268" text-anchor="middle">Sep 13</text>
+<line class="axis" x1="400" y1="250" x2="400" y2="254" stroke-width="1"/>
+<text x="400" y="268" text-anchor="middle">Sep 27</text>
+<line class="axis" x1="512" y1="250" x2="512" y2="254" stroke-width="1"/>
+<text x="512" y="268" text-anchor="middle">Oct 11</text>
+<line class="axis" x1="624" y1="250" x2="624" y2="254" stroke-width="1"/>
+<text x="624" y="268" text-anchor="middle">Oct 25</text>
+<line class="axis" x1="736" y1="250" x2="736" y2="254" stroke-width="1"/>
+<text x="736" y="268" text-anchor="middle">Nov 8</text>
+<g class="k-views">
+<linearGradient id="fill-views" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0.22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path class="area" d="M560 250 L560 250 L568 250 L576 250 L584 250 L592 250 L600 250 L608 250 L616 250 L624 250 L632 250 L640 250 L648 210 L656 250 L664 250 L672 250 L680 100 L688 240 L696 210 L704 220 L712 160 L720 250 L728 250 L736 250 L744 250 L752 250 L760 220 L768 250 L776 240 L776 250 Z" fill="url(#fill-views)"/>
+<path class="line views" d="M560 250 L568 250 L576 250 L584 250 L592 250 L600 250 L608 250 L616 250 L624 250 L632 250 L640 250 L648 210 L656 250 L664 250 L672 250 L680 100 L688 240 L696 210 L704 220 L712 160 L720 250 L728 250 L736 250 L744 250 L752 250 L760 220 L768 250 L776 240" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g class="k-uniqueViews">
+<path class="line uniqueViews" d="M560 250 L568 250 L576 250 L584 250 L592 250 L600 250 L608 250 L616 250 L624 250 L632 250 L640 250 L648 240 L656 250 L664 250 L672 250 L680 240 L688 240 L696 240 L704 240 L712 240 L720 250 L728 250 L736 250 L744 250 L752 250 L760 230 L768 250 L776 240" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
+</g>
+<line class="k-views" x1="24" y1="296" x2="42" y2="296" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+<text x="48" y="300">Views</text>
+<line class="k-uniqueViews" x1="94" y1="296" x2="112" y2="296" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+<text x="118" y="300">Unique visitors</text>
+<text x="776" y="300" text-anchor="end">Daily counts</text>
 </svg>
