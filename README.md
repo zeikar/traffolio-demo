@@ -19,7 +19,7 @@ This repository is an ordinary instance of the Traffolio template, configured wi
 ![Views over the last 30 days](assets/views.svg)
 ![Clones over the last 30 days](assets/clones.svg)
 
-#### Top referrers (last 14 days as of 2026-11-15, UTC)
+#### Top referrers (last 14 days as of 2026-11-16, UTC)
 
 | Referrer | Views from referrer |
 | --- | ---: |
