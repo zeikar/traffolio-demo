@@ -694,6 +694,41 @@
           "uniques": 3
         }
       ]
+    },
+    "2026-11-17": {
+      "paths": [
+        {
+          "count": 16,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 4
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions",
+          "title": "/actions",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions/runs/42014574720",
+          "title": "/actions/runs/42014574720",
+          "uniques": 1
+        },
+        {
+          "count": 1,
+          "path": "/zeikar/traffolio/actions/runs/42014574720/job/127201755336",
+          "title": "/actions/runs/42014574720/job/127201755336",
+          "uniques": 1
+        }
+      ],
+      "referrers": [
+        {
+          "count": 16,
+          "referrer": "github.com",
+          "uniques": 3
+        }
+      ]
     }
   }
 }
