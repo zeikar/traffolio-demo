@@ -884,6 +884,23 @@
           "uniques": 2
         }
       ]
+    },
+    "2026-11-25": {
+      "paths": [
+        {
+          "count": 5,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 4
+        }
+      ],
+      "referrers": [
+        {
+          "count": 3,
+          "referrer": "github.com",
+          "uniques": 2
+        }
+      ]
     }
   }
 }
