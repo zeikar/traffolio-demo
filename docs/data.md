@@ -12,7 +12,8 @@ data/
   growth/<repo_id>.json      stars and forks per date
   referrers/<repo_id>/YYYY-MM.json   top referrers and pages, one snapshot per run date
   releases/<repo_id>.json    cumulative release downloads per run date (only repos with release assets)
-assets/views.svg, clones.svg generated README charts
+assets/views.svg, clones.svg generated README charts (last 30 days)
+assets/stars.svg             README chart of cumulative stars across tracked repos (last 90 days)
 assets/sparklines/<repo_id>.svg   30-day views trend shown in the README table
 assets/repos/<repo_id>/views.svg, clones.svg, stars.svg   90-day charts of the repository page
 repos/<repo_id>.md           per-repository page (totals, charts, referrers, releases)

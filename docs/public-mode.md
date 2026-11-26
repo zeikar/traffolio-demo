@@ -20,6 +20,7 @@ A public-mode repository's charts are public files, so any README can show them,
 ```
 
 - `assets/views.svg` and `assets/clones.svg`: daily totals across the selected repositories over the last 30 days, headlined by the 30-day total (marked `*` when some days are missing or partial).
+- `assets/stars.svg`: cumulative stars summed over the selected repositories for the last 90 days, headlined by the latest total, once star history has been stored.
 - `assets/repos/<repo_id>/views.svg`, `clones.svg`: one repository's last 90 days, and `stars.svg` once its star history has been stored. `<repo_id>` is the repository's numeric ID, the name of its page in `repos/` (linked from the README table), or `gh api repos/<user>/<name> --jq .id`.
 
 Replace `main` if your default branch has another name. Charts in a private Traffolio repository can't be embedded elsewhere: their URLs need access to the repository.

@@ -14,6 +14,8 @@ export class MarkerError extends Error {
 export interface RenderOptions {
   viewsSvgPath: string;
   clonesSvgPath: string;
+  /** Omitted or null: no stars chart (no tracked repository has star history yet). */
+  starsSvgPath?: string | null;
   /** Image path of a row's trend sparkline, by repo id. */
   sparklinePath: (id: string) => string;
   /** Link target of a row's repository page, by repo id. */
@@ -150,8 +152,9 @@ export function renderSection(model: DashboardModel, opts: RenderOptions): strin
   out.push(
     `![Views over the last 30 days](${opts.viewsSvgPath})`,
     `![Clones over the last 30 days](${opts.clonesSvgPath})`,
-    "",
   );
+  if (opts.starsSvgPath) out.push(`![Stars over the last 90 days](${opts.starsSvgPath})`);
+  out.push("");
   if (opts.topReferrers) out.push(...referrerTable(opts.topReferrers));
   out.push(
     "All dates and windows are UTC.  ",

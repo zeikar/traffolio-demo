@@ -10,6 +10,7 @@ import {
   renderChartSvg,
   repoClonesChart,
   repoStarsChart,
+  totalStarsChart,
   repoViewsChart,
   viewsChart,
   type ChartSpec,
@@ -279,6 +280,13 @@ describe("per-repository charts", () => {
     expect(count(svg, /<path class="line /g)).toBe(1);
     expect(svg).toContain(">Stars</text>");
     expect(headline(svg)).toBe("89");
+  });
+
+  it("notes the README stars chart as a sum over the tracked repos", () => {
+    const stars = dates.map((date, i) => ({ date, total: i }));
+    expect(totalStarsChart(stars, false)).toContain("Tracked repos · last 90 days");
+    expect(repoStarsChart(stars, false)).toContain("Last 90 days");
+    expect(totalStarsChart([], false)).toContain("No star history stored");
   });
 
   it("show the placeholder when nothing is stored", () => {

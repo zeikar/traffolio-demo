@@ -86,6 +86,13 @@ function starSeries(stars: Record<string, number>, start: string, end: string): 
   });
 }
 
+/** The README stars chart: several repositories' star histories summed, over the repository-page window ending at `end`. */
+export function totalStarSeries(histories: Record<string, number>[], end: string): { date: string; total: number }[] {
+  const merged: Record<string, number> = {};
+  for (const stars of histories) for (const [date, n] of Object.entries(stars)) merged[date] = (merged[date] ?? 0) + n;
+  return starSeries(merged, shiftDate(end, 1 - REPO_SERIES_DAYS), end);
+}
+
 function newestSnapshotDate(dates: string[]): string | undefined {
   return dates.sort().at(-1);
 }
