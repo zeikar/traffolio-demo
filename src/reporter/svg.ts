@@ -393,7 +393,7 @@ export function repoClonesChart(points: RepoSeriesPoint[], incomplete: boolean, 
   );
 }
 
-export function repoStarsChart(stars: { date: string; total: number }[], sampleLabel: boolean): string {
+function starsChart(stars: { date: string; total: number }[], note: string, sampleLabel: boolean): string {
   const dates = stars.map((s) => s.date);
   return renderChartSvg({
     title: "Stars",
@@ -401,8 +401,17 @@ export function repoStarsChart(stars: { date: string; total: number }[], sampleL
     dates,
     lines: [{ key: "stars", label: "Stars", values: stars.map((s) => s.total), area: true }],
     asOf: asOf(dates),
-    note: "Last 90 days",
+    note,
     emptyText: "No star history stored",
     sampleLabel,
   });
+}
+
+export function repoStarsChart(stars: { date: string; total: number }[], sampleLabel: boolean): string {
+  return starsChart(stars, "Last 90 days", sampleLabel);
+}
+
+/** The README's stars chart: cumulative stars summed over the tracked repos. */
+export function totalStarsChart(stars: { date: string; total: number }[], sampleLabel: boolean): string {
+  return starsChart(stars, "Tracked repos · last 90 days", sampleLabel);
 }

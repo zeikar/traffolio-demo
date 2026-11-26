@@ -13,10 +13,11 @@ GitHub's Traffic API only returns the last 14 days of views and clones. Traffoli
 <!-- TRAFFOLIO:START -->
 **No traffic data collected yet.** After the first collection run, this block is replaced with your own numbers. See [Setup](#setup).
 
-Live example: daily traffic of [zeikar/traffolio](https://github.com/zeikar/traffolio), collected by Traffolio in public mode in [zeikar/traffolio-demo](https://github.com/zeikar/traffolio-demo).
+Live example: daily traffic and stars of [zeikar/traffolio](https://github.com/zeikar/traffolio), collected by Traffolio in public mode in [zeikar/traffolio-demo](https://github.com/zeikar/traffolio-demo).
 
 ![Live views of zeikar/traffolio](https://raw.githubusercontent.com/zeikar/traffolio-demo/main/assets/views.svg)
 ![Live clones of zeikar/traffolio](https://raw.githubusercontent.com/zeikar/traffolio-demo/main/assets/clones.svg)
+![Live stars of zeikar/traffolio](https://raw.githubusercontent.com/zeikar/traffolio-demo/main/assets/stars.svg)
 
 [See a full sample section (sample data)](docs/demo/README-section.md)
 <!-- TRAFFOLIO:END -->
@@ -39,7 +40,7 @@ It is not:
 2. It lists your owned repositories, applies the filters in `traffolio.config.yml`, and fetches the latest 14 days of daily views and clones for each one.
 3. The results are merged into JSON files under `data/`. Each day is overwritten (upserted) by repository ID and UTC date, so re-running never double-counts.
 4. For the same repositories it also records star and fork history, a snapshot of the top referrers and popular pages, and release download counts (see [Data](docs/data.md)). These extras run after the traffic and never change how the traffic part of the run is judged.
-5. The README dashboard (between the `TRAFFOLIO` markers), `assets/views.svg`, `assets/clones.svg`, the trend images in `assets/sparklines/`, and one page per repository in `repos/<repo_id>.md` with its charts in `assets/repos/<repo_id>/` are regenerated from that JSON. Only that marked block is rewritten; the rest of this README is yours. Keep exactly one `TRAFFOLIO:START` and one `TRAFFOLIO:END` marker comment, in that order (writing either marker out in full anywhere else in this README, even in a code span, counts as a second copy): otherwise the run stops before collecting and writes nothing (see [Troubleshooting](docs/operations.md#troubleshooting)).
+5. The README dashboard (between the `TRAFFOLIO` markers), `assets/views.svg`, `assets/clones.svg`, `assets/stars.svg`, the trend images in `assets/sparklines/`, and one page per repository in `repos/<repo_id>.md` with its charts in `assets/repos/<repo_id>/` are regenerated from that JSON. Only that marked block is rewritten; the rest of this README is yours. Keep exactly one `TRAFFOLIO:START` and one `TRAFFOLIO:END` marker comment, in that order (writing either marker out in full anywhere else in this README, even in a code span, counts as a second copy): otherwise the run stops before collecting and writes nothing (see [Troubleshooting](docs/operations.md#troubleshooting)).
 6. If any file changed, the workflow commits it with `GITHUB_TOKEN`. If nothing changed, there is no commit.
 
 ## Setup

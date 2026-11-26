@@ -40,6 +40,14 @@ const rowLine = (s: string, name: string) =>
   s.split("\n").find((l) => l.includes(`/${name}]`))!;
 
 describe("renderSection", () => {
+  it("adds the stars chart under the traffic charts only when given a path", () => {
+    const withStars = renderSection(model, { ...opts, starsSvgPath: "./stars.svg" });
+    expect(withStars).toContain(
+      "![Clones over the last 30 days](./clones.svg)\n![Stars over the last 90 days](./stars.svg)\n",
+    );
+    expect(renderSection(model, opts)).not.toContain("stars.svg");
+  });
+
   it("links the repository cell to its page, then to GitHub", () => {
     const line = rowLine(renderSection(model, opts), "sample-cli");
     expect(line.split("|")[1]!.trim()).toBe(

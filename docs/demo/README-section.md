@@ -19,6 +19,7 @@
 
 ![Views over the last 30 days](assets/views.svg)
 ![Clones over the last 30 days](assets/clones.svg)
+![Stars over the last 90 days](assets/stars.svg)
 
 #### Top referrers (last 14 days as of 2026-10-27, UTC)
 

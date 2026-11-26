@@ -214,11 +214,13 @@ describe("extras happy path", () => {
     expect(before["repos/100001.md"]).toContain("## Stars and forks");
     // 100002's growth file is empty: the chart is the placeholder, but it exists.
     for (const id of ["100001", "100002", "100003"]) expect(before[`assets/repos/${id}/stars.svg`]).toBeDefined();
+    expect(before["assets/stars.svg"]).toContain("Tracked repos · last 90 days");
 
     const readme = before["README.md"]!;
     expect(readme).toContain("#### Top referrers (last 14 days as of 2026-10-27, UTC)");
     expect(readme).toContain("| github.com | 192 |");
     expect(readme).toContain("| Google | 36 |");
+    expect(readme).toContain("![Stars over the last 90 days](assets/stars.svg)");
 
     // The private repository is never requested nor written.
     for (const text of Object.values(before)) {

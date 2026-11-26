@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" role="img" aria-label="Traffolio: Stars: 67. Data through 2026-10-25 (UTC)">
+<title>Traffolio: Stars: 67. Data through 2026-10-25 (UTC)</title>
+<style>svg{--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;--grid:#eaeef2;--axis:#8c959f;--views:#0969da;--uniqueViews:#54aeff;--clones:#bc4c00;--uniqueCloners:#fb8f44;--stars:#bf8700;--warn:#7d4e00;--warn-bg:#fff8c5;--warn-border:#d4a72c}@media (prefers-color-scheme:dark){svg{--surface:#151b23;--border:#3d444d;--text:#f0f6fc;--muted:#9198a1;--grid:#262c36;--axis:#656c76;--views:#4493f8;--uniqueViews:#1f6feb;--clones:#f0883e;--uniqueCloners:#bd561d;--stars:#e3b341;--warn:#d29922;--warn-bg:rgba(187,128,9,.15);--warn-border:rgba(187,128,9,.45)}}.card{fill:var(--surface);stroke:var(--border)}.grid{stroke:var(--grid)}.axis{stroke:var(--axis)}.k-views{color:var(--views)}.k-uniqueViews{color:var(--uniqueViews)}.k-clones{color:var(--clones)}.k-uniqueCloners{color:var(--uniqueCloners)}.k-stars{color:var(--stars)}text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:var(--muted);font-size:11px}.title{font-size:13px}.headline{font-size:28px;font-weight:600;fill:var(--text)}.partial{fill:var(--surface)}.partial-key{fill:var(--surface);stroke:var(--muted)}.banner-box{fill:var(--warn-bg);stroke:var(--warn-border)}.banner{font-size:11px;font-weight:700;fill:var(--warn);letter-spacing:1px}.empty{font-size:14px}</style>
+<rect class="card" x="0.5" y="0.5" width="799" height="319" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="32" class="title">Stars</text>
+<text x="776" y="32" text-anchor="end">Data through 2026-10-25 (UTC)</text>
+<text x="24" y="70" class="headline">67</text>
+<rect class="banner-box" x="660" y="46" width="116" height="24" rx="6"/>
+<text x="718" y="62" class="banner" text-anchor="middle">SAMPLE DATA</text>
+<text x="56" y="254" text-anchor="end">0</text>
+<line class="grid" x1="64" y1="213" x2="776" y2="213" stroke-width="1"/>
+<text x="56" y="217" text-anchor="end">20</text>
+<line class="grid" x1="64" y1="175" x2="776" y2="175" stroke-width="1"/>
+<text x="56" y="179" text-anchor="end">40</text>
+<line class="grid" x1="64" y1="138" x2="776" y2="138" stroke-width="1"/>
+<text x="56" y="142" text-anchor="end">60</text>
+<line class="grid" x1="64" y1="100" x2="776" y2="100" stroke-width="1"/>
+<text x="56" y="104" text-anchor="end">80</text>
+<line class="axis" x1="64" y1="100" x2="64" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="776" y2="250" stroke-width="1"/>
+<line class="axis" x1="64" y1="250" x2="64" y2="254" stroke-width="1"/>
+<text x="64" y="268" text-anchor="middle">Jul 28</text>
+<line class="axis" x1="176" y1="250" x2="176" y2="254" stroke-width="1"/>
+<text x="176" y="268" text-anchor="middle">Aug 11</text>
+<line class="axis" x1="288" y1="250" x2="288" y2="254" stroke-width="1"/>
+<text x="288" y="268" text-anchor="middle">Aug 25</text>
+<line class="axis" x1="400" y1="250" x2="400" y2="254" stroke-width="1"/>
+<text x="400" y="268" text-anchor="middle">Sep 8</text>
+<line class="axis" x1="512" y1="250" x2="512" y2="254" stroke-width="1"/>
+<text x="512" y="268" text-anchor="middle">Sep 22</text>
+<line class="axis" x1="624" y1="250" x2="624" y2="254" stroke-width="1"/>
+<text x="624" y="268" text-anchor="middle">Oct 6</text>
+<line class="axis" x1="736" y1="250" x2="736" y2="254" stroke-width="1"/>
+<text x="736" y="268" text-anchor="middle">Oct 20</text>
+<g class="k-stars">
+<linearGradient id="fill-stars" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0.22"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path class="area" d="M64 250 L64 160 L72 160 L80 160 L88 160 L96 160 L104 160 L112 160 L120 160 L128 160 L136 160 L144 160 L152 160 L160 158 L168 158 L176 156 L184 154 L192 153 L200 153 L208 153 L216 151 L224 151 L232 151 L240 149 L248 149 L256 149 L264 149 L272 149 L280 149 L288 149 L296 147 L304 147 L312 147 L320 147 L328 147 L336 147 L344 147 L352 147 L360 147 L368 147 L376 145 L384 145 L392 145 L400 143 L408 143 L416 143 L424 141 L432 141 L440 141 L448 139 L456 139 L464 138 L472 138 L480 138 L488 138 L496 138 L504 138 L512 138 L520 138 L528 138 L536 136 L544 134 L552 134 L560 132 L568 132 L576 132 L584 132 L592 132 L600 132 L608 132 L616 132 L624 132 L632 132 L640 132 L648 132 L656 130 L664 130 L672 130 L680 130 L688 130 L696 130 L704 130 L712 130 L720 130 L728 130 L736 130 L744 128 L752 128 L760 126 L768 126 L776 124 L776 250 Z" fill="url(#fill-stars)"/>
+<path class="line stars" d="M64 160 L72 160 L80 160 L88 160 L96 160 L104 160 L112 160 L120 160 L128 160 L136 160 L144 160 L152 160 L160 158 L168 158 L176 156 L184 154 L192 153 L200 153 L208 153 L216 151 L224 151 L232 151 L240 149 L248 149 L256 149 L264 149 L272 149 L280 149 L288 149 L296 147 L304 147 L312 147 L320 147 L328 147 L336 147 L344 147 L352 147 L360 147 L368 147 L376 145 L384 145 L392 145 L400 143 L408 143 L416 143 L424 141 L432 141 L440 141 L448 139 L456 139 L464 138 L472 138 L480 138 L488 138 L496 138 L504 138 L512 138 L520 138 L528 138 L536 136 L544 134 L552 134 L560 132 L568 132 L576 132 L584 132 L592 132 L600 132 L608 132 L616 132 L624 132 L632 132 L640 132 L648 132 L656 130 L664 130 L672 130 L680 130 L688 130 L696 130 L704 130 L712 130 L720 130 L728 130 L736 130 L744 128 L752 128 L760 126 L768 126 L776 124" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<text x="776" y="300" text-anchor="end">Tracked repos · last 90 days</text>
+</svg>
