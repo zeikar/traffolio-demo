@@ -901,6 +901,17 @@
           "uniques": 2
         }
       ]
+    },
+    "2026-11-26": {
+      "paths": [
+        {
+          "count": 2,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 2
+        }
+      ],
+      "referrers": []
     }
   }
 }
