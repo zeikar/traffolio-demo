@@ -912,6 +912,17 @@
         }
       ],
       "referrers": []
+    },
+    "2026-11-27": {
+      "paths": [
+        {
+          "count": 2,
+          "path": "/zeikar/traffolio",
+          "title": "Overview",
+          "uniques": 2
+        }
+      ],
+      "referrers": []
     }
   }
 }
